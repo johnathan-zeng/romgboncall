@@ -52,3 +52,26 @@ export type EmergencyFlow = {
   figures: FlowFigure[];
   nodes: FlowNode[];
 };
+
+export type QuickSection = {
+  title: string;
+  items: string[];
+};
+
+export type TaperPlan = {
+  label: string;
+  schedule: string[];
+  note?: string;
+};
+
+export type PhoneGuide = {
+  id: string;
+  title: string;
+  synopsis: string;
+  firstSteps: string[];
+  edTriggers: string[];
+  communication: string[];
+  nodes: FlowNode[];
+  sections: QuickSection[];
+  tapers: TaperPlan[];
+};
