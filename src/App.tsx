@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { categoryLabels, emergencyFlows } from "./data/emergencies";
-import { EmergencyFlow, FlowNode, FlowReference } from "./types";
+import { EmergencyFlow, FlowFigure, FlowNode } from "./types";
 
 const flowMap = new Map(emergencyFlows.map((flow) => [flow.id, flow]));
 
@@ -49,7 +49,7 @@ function HomePage() {
           className="search-input"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Try hemoptysis, cord compression, LMD, dysphagia..."
+          placeholder="Try hemoptysis, brain metastasis, LMD, bowel obstruction..."
         />
       </section>
 
@@ -82,8 +82,8 @@ function Hero() {
         <div className="eyebrow">Radiation Oncology On-Call</div>
         <h1>Interactive emergency pathways for radiation oncology call.</h1>
         <p>
-          Click into an emergency, branch through key triage decisions, and surface
-          a concise action frame for consults, temporizing measures, and RT planning.
+          Move through the major decision points, then open the underlying algorithm
+          figure in-page when you want the full visual map.
         </p>
       </div>
     </header>
@@ -94,6 +94,7 @@ function EmergencyPage() {
   const { flowId } = useParams();
   const flow = flowId ? flowMap.get(flowId) : undefined;
   const location = useLocation();
+  const [activeFigure, setActiveFigure] = useState<FlowFigure | null>(null);
 
   if (!flow) {
     return (
@@ -114,6 +115,7 @@ function EmergencyPage() {
         </Link>
         <span className="route-chip">{location.pathname}</span>
       </nav>
+
       <section className="detail-header">
         <div>
           <span className={`tag tag-${flow.category}`}>
@@ -125,9 +127,25 @@ function EmergencyPage() {
         <div className="header-summary">
           <div>
             <strong>Source Basis</strong>
-            <ReferenceList references={flow.references} />
+            <CitationList flow={flow} />
           </div>
         </div>
+      </section>
+
+      <section className="figure-strip">
+        {flow.figures.map((figure) => (
+          <button
+            key={figure.id}
+            className="figure-card"
+            onClick={() => setActiveFigure(figure)}
+          >
+            <img src={figure.src} alt={figure.title} />
+            <div>
+              <strong>{figure.title}</strong>
+              <span>{figure.caption}</span>
+            </div>
+          </button>
+        ))}
       </section>
 
       <section className="detail-grid">
@@ -139,6 +157,23 @@ function EmergencyPage() {
         </aside>
         <FlowExplorer flow={flow} />
       </section>
+
+      {activeFigure ? (
+        <FigureModal figure={activeFigure} onClose={() => setActiveFigure(null)} />
+      ) : null}
+    </div>
+  );
+}
+
+function CitationList({ flow }: { flow: EmergencyFlow }) {
+  return (
+    <div className="citation-list">
+      {flow.citations.map((citation) => (
+        <div key={citation.id} className="citation-card">
+          <strong>{citation.title}</strong>
+          <span>{citation.citation}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -191,7 +226,7 @@ function FlowExplorer({ flow }: { flow: EmergencyFlow }) {
       </div>
 
       {currentNode.outcome ? (
-        <OutcomeCard flow={flow} node={currentNode} />
+        <OutcomeCard node={currentNode} />
       ) : (
         <div className="choice-grid">
           {currentNode.choices?.map((choice) => (
@@ -210,7 +245,7 @@ function FlowExplorer({ flow }: { flow: EmergencyFlow }) {
   );
 }
 
-function OutcomeCard({ flow, node }: { flow: EmergencyFlow; node: FlowNode }) {
+function OutcomeCard({ node }: { node: FlowNode }) {
   const outcome = node.outcome!;
 
   return (
@@ -231,54 +266,11 @@ function OutcomeCard({ flow, node }: { flow: EmergencyFlow; node: FlowNode }) {
       {outcome.notes?.length ? (
         <OutcomeSection title="Notes / cautions" items={outcome.notes} />
       ) : null}
-      <ReferencePanel references={flow.references} />
       <div className="disclaimer">
         Educational guide only. Verify against attending guidance, institutional workflows,
         re-irradiation history, and current multidisciplinary recommendations.
       </div>
     </article>
-  );
-}
-
-function ReferencePanel({ references }: { references: FlowReference[] }) {
-  return (
-    <section className="outcome-section">
-      <h4>Related teaching files</h4>
-      <div className="reference-stack">
-        {references.map((reference) => (
-          <a
-            key={reference.id}
-            className="reference-card"
-            href={reference.href}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span className="reference-format">{reference.format.toUpperCase()}</span>
-            <strong>{reference.title}</strong>
-            <span>{reference.citation}</span>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ReferenceList({ references }: { references: FlowReference[] }) {
-  return (
-    <div className="reference-list">
-      {references.map((reference) => (
-        <a
-          key={reference.id}
-          className="reference-inline"
-          href={reference.href}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <strong>{reference.title}</strong>
-          <span>{reference.citation}</span>
-        </a>
-      ))}
-    </div>
   );
 }
 
@@ -292,6 +284,31 @@ function OutcomeSection({ title, items }: { title: string; items: string[] }) {
         ))}
       </ul>
     </section>
+  );
+}
+
+function FigureModal({
+  figure,
+  onClose,
+}: {
+  figure: FlowFigure;
+  onClose: () => void;
+}) {
+  return (
+    <div className="modal-backdrop" onClick={onClose} role="presentation">
+      <div className="modal-card" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true">
+        <div className="modal-header">
+          <div>
+            <strong>{figure.title}</strong>
+            <span>{figure.caption}</span>
+          </div>
+          <button className="button-link subtle" onClick={onClose}>
+            Close
+          </button>
+        </div>
+        <img className="modal-image" src={figure.src} alt={figure.title} />
+      </div>
+    </div>
   );
 }
 

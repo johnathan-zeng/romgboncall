@@ -1,74 +1,118 @@
-import { EmergencyFlow, FlowReference } from "../types";
+import { EmergencyFlow, FlowCitation, FlowFigure } from "../types";
 
-const referenceLibrary: Record<string, FlowReference> = {
-  cnsDeck: {
-    id: "cnsDeck",
+const citationLibrary: Record<string, FlowCitation> = {
+  cns: {
+    id: "cns",
     title: "ARRO CNS Emergencies",
     citation:
       "Vera A, Dias Neto, Medina A, Freret M. Radiation Oncology On-Call Handbook: CNS emergencies. Association of Residents in Radiation Oncology. December 2025.",
-    href: "/references/pptx/ARRO_CNS_Emergencies_121625_sn.pptx",
-    format: "pptx",
   },
-  thoracicDeck: {
-    id: "thoracicDeck",
-    title: "ARRO ROCK Thoracic Emergencies",
-    citation:
-      "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Hemoptysis and Airway Obstruction. Association of Residents in Radiation Oncology. January 23, 2026.",
-    href: "/references/pptx/ARRO_ROCK_ThoracicEmergencies.pptx",
-    format: "pptx",
-  },
-  airwayDeck: {
-    id: "airwayDeck",
-    title: "ARRO ROCK Airway Obstruction",
+  thoracicAirway: {
+    id: "thoracicAirway",
+    title: "ARRO Airway Obstruction",
     citation:
       "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Airway Obstruction. Association of Residents in Radiation Oncology. January 23, 2026.",
-    href: "/references/pptx/ARRO_ROCK_airway_obstruct_1_27_26.pptx",
-    format: "pptx",
   },
-  hemoptysisDeck: {
-    id: "hemoptysisDeck",
-    title: "ARRO ROCK Hemoptysis",
+  thoracicHemoptysis: {
+    id: "thoracicHemoptysis",
+    title: "ARRO Hemoptysis",
     citation:
       "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Hemoptysis. Association of Residents in Radiation Oncology. January 23, 2026.",
-    href: "/references/pptx/ARRO_ROCK_hemoptysis_1_27_26.pptx",
-    format: "pptx",
   },
-  bleedingDeck: {
-    id: "bleedingDeck",
+  bleeding: {
+    id: "bleeding",
     title: "ARRO Tumor Bleeding",
     citation:
       "Zhao S, Neibart SS, Turner BE. Radiation Oncology On-Call Handbook: Palliative Radiation for Tumor Bleeding. Association of Residents in Radiation Oncology. September 15, 2025.",
-    href: "/references/pptx/ARRO_bleeding_SZ_SN.pptx",
-    format: "pptx",
   },
-  giDeck: {
-    id: "giDeck",
+  gi: {
+    id: "gi",
     title: "ARRO GI Emergencies",
     citation:
       "Ho A. Radiation Oncology On-Call Handbook: Gastrointestinal Emergencies. Association of Residents in Radiation Oncology. September 15, 2025.",
-    href: "/references/pptx/NEW_GI_OnCall_V3.pptx",
-    format: "pptx",
   },
-  paradigmDoc: {
-    id: "paradigmDoc",
-    title: "Palliative RT: General Paradigms and Concepts",
+  paradigm: {
+    id: "paradigm",
+    title: "General Paradigms of Palliative RT",
     citation:
       "Ho A. Palliative RT: General Paradigms and Concepts. Peer reviewed by the ARRO Education Subcommittee.",
-    href: "/references/docx/General%20Paradigm%20of%20Palliative%20RT%20V2.docx",
-    format: "docx",
   },
-  manuscriptDoc: {
-    id: "manuscriptDoc",
+  manuscript: {
+    id: "manuscript",
     title: "Inpatient Radiation Oncology and On-Call Emergencies",
     citation:
       "Neibart SS. Inpatient Radiation Oncology and On-Call Emergencies. Department of Radiation Oncology, Mass General Brigham.",
-    href: "/references/docx/ROEmergencies_Manuscript_rev1.docx",
-    format: "docx",
   },
 };
 
-const refs = (...ids: Array<keyof typeof referenceLibrary>) =>
-  ids.map((id) => referenceLibrary[id]);
+const figureLibrary: Record<string, FlowFigure> = {
+  airway: {
+    id: "airway",
+    title: "Airway obstruction algorithm",
+    src: "/figures/ARRO%20Airway%20Obstruction.png",
+    caption: "Click to enlarge the airway obstruction algorithm.",
+  },
+  airwayAlt: {
+    id: "airwayAlt",
+    title: "Airway obstruction algorithm (alternate export)",
+    src: "/figures/ARRO%20Airway%20Obstruction%202.png",
+    caption: "Alternate exported version of the airway obstruction figure.",
+  },
+  bleeding: {
+    id: "bleeding",
+    title: "Tumor bleeding algorithm",
+    src: "/figures/ARRO%20Bleeding.png",
+    caption: "Click to enlarge the general tumor bleeding algorithm.",
+  },
+  bowel: {
+    id: "bowel",
+    title: "Bowel obstruction algorithm",
+    src: "/figures/ARRO%20Bowel%20Obstruction.png",
+    caption: "Click to enlarge the malignant bowel obstruction algorithm.",
+  },
+  brain: {
+    id: "brain",
+    title: "Brain metastasis algorithm",
+    src: "/figures/ARRO%20Brain%20Metastasis.png",
+    caption: "Click to enlarge the brain metastasis algorithm.",
+  },
+  dysphagia: {
+    id: "dysphagia",
+    title: "Dysphagia algorithm",
+    src: "/figures/ARRO%20Dysphagia.png",
+    caption: "Click to enlarge the esophageal/EGJ obstruction algorithm.",
+  },
+  giBleeding: {
+    id: "giBleeding",
+    title: "GI bleeding algorithm",
+    src: "/figures/ARRO%20GI%20Bleeding.png",
+    caption: "Click to enlarge the GI bleeding algorithm.",
+  },
+  hemoptysis: {
+    id: "hemoptysis",
+    title: "Hemoptysis algorithm",
+    src: "/figures/ARRO%20Hemoptysis.png",
+    caption: "Click to enlarge the hemoptysis algorithm.",
+  },
+  lmd1: {
+    id: "lmd1",
+    title: "LMD diagnostic algorithm",
+    src: "/figures/ARRO%20LMD.png",
+    caption: "Click to enlarge the leptomeningeal disease diagnostic pathway.",
+  },
+  lmd2: {
+    id: "lmd2",
+    title: "LMD treatment algorithm",
+    src: "/figures/ARRO%20LMD%202.png",
+    caption: "Click to enlarge the leptomeningeal disease treatment pathway.",
+  },
+};
+
+const citations = (...ids: Array<keyof typeof citationLibrary>) =>
+  ids.map((id) => citationLibrary[id]);
+
+const figures = (...ids: Array<keyof typeof figureLibrary>) =>
+  ids.map((id) => figureLibrary[id]);
 
 export const emergencyFlows: EmergencyFlow[] = [
   {
@@ -77,258 +121,140 @@ export const emergencyFlows: EmergencyFlow[] = [
     shortTitle: "Brain Mets",
     category: "cns",
     chiefComplaint:
-      "Headache, nausea/vomiting, seizure, focal deficit, vision change, cognitive change.",
+      "Headache, nausea/vomiting, seizure, focal deficit, vision change, or cognitive change.",
     synopsis:
-      "Interactive pathway for symptomatic brain metastases with emphasis on steroids, seizure management, neurosurgery triage, and WBRT vs focal options.",
+      "Large lesion and resectability first, then select among postoperative focal RT, SRS, or whole-brain approaches.",
     redFlags: [
-      "Seizure activity",
-      "Progressive mental status change",
-      "Cushing-type signs or concern for elevated ICP",
       "Large lesion with mass effect",
+      "Seizure activity",
       "Rapid neurologic decline",
+      "Elevated ICP symptoms",
+      "Progressive mental status change",
     ],
     workup: [
-      "Focused neurologic history and full exam",
       "MRI brain with contrast",
-      "Systemic staging if no known primary or long disease-free interval",
-      "Consider MRI spine if LMD symptoms are present",
+      "Focused neurologic exam",
+      "Systemic staging if diagnosis is new or unclear",
+      "Review systemic options with CNS activity",
     ],
-    defaultConsults: [
-      "Neurosurgery",
-      "Medical oncology / primary oncology team",
-      "Radiation oncology",
-    ],
+    defaultConsults: ["Neurosurgery", "Medical oncology", "Radiation oncology"],
     commonDoseFx: [
       "WBRT 30 Gy in 10 fractions",
-      "WBRT 20 Gy in 5 fractions for poorer prognosis",
-      "SRS considered in limited metastatic disease when clinically appropriate",
+      "HA-WBRT 30 Gy in 10 fractions + memantine",
+      "SRS: <=2 cm 20 Gy x 1, 2-3 cm 18 Gy x 1, 3 cm 15 Gy x 1",
+      "Post-op cavity SRT: often 25 Gy in 5 fractions",
     ],
-    references: refs("cnsDeck", "manuscriptDoc"),
+    citations: citations("cns", "manuscript"),
+    figures: figures("brain"),
     nodes: [
       {
         id: "start",
-        prompt: "Is the patient actively unstable from intracranial disease?",
-        detail:
-          "Look for seizure, marked mental status change, uncontrolled vomiting, bradycardia/hypertension pattern, or severe mass-effect symptoms.",
+        prompt: "Is there a large lesion greater than 4 cm or clinically meaningful mass effect?",
+        detail: "The figure prioritizes lesion size and mass effect before selecting focal or whole-brain approaches.",
         choices: [
-          { label: "Yes, unstable / high ICP concern", next: "unstable" },
-          { label: "No, symptomatic but currently stable", next: "stable" },
+          { label: "Yes", next: "resectable" },
+          { label: "No", next: "limited-disease" },
         ],
       },
       {
-        id: "unstable",
-        prompt: "Is there a resectable dominant lesion with mass effect in a reasonable surgical candidate?",
-        detail:
-          "Large lesions, brisk decline, or substantial mass effect often need urgent neurosurgical input before RT.",
+        id: "resectable",
+        prompt: "Is the patient ECOG 0-2 and is the lesion resectable?",
+        detail: "If yes, the figure routes toward resection followed by postoperative focal radiation.",
         choices: [
-          { label: "Yes, likely surgical candidate", next: "surgery-outcome" },
-          { label: "No / diffuse disease / not surgical", next: "wbtr-outcome" },
+          { label: "Yes, good surgical candidate", next: "postop-outcome" },
+          { label: "No, not resectable or poor candidate", next: "systemic-outcome" },
         ],
       },
       {
-        id: "stable",
-        prompt: "Is disease limited enough that focal therapy may be preferable to upfront WBRT?",
-        detail:
-          "For limited metastases with acceptable performance status, SRS discussion is typically non-emergent but important.",
+        id: "limited-disease",
+        prompt: "If surgery is not leading the path, does the intracranial burden fit focal treatment?",
+        detail: "Use this to separate SRS/SRT-style strategies from whole-brain approaches.",
         choices: [
-          { label: "Yes, limited disease", next: "srs-outcome" },
-          { label: "No, diffuse or symptomatic burden favors WBRT", next: "wbtr-outcome" },
+          { label: "Yes, focal treatment fits", next: "srs-outcome" },
+          { label: "No, broader intracranial coverage needed", next: "wb-outcome" },
         ],
       },
       {
-        id: "surgery-outcome",
-        prompt: "Immediate stabilization path",
-        detail: "Urgent decompression-first approach.",
+        id: "postop-outcome",
+        prompt: "Postoperative focal pathway",
+        detail: "Resection followed by cavity-directed treatment.",
         outcome: {
-          title: "Urgent Neurosurgical Evaluation",
+          title: "Resection Followed by Post-op Focal RT",
           urgency: "High",
           summary:
-            "Prioritize steroids, seizure control if needed, and neurosurgical evaluation for decompression or resection before radiation planning.",
+            "The figure favors resection for a large resectable lesion in a good candidate, then postoperative cavity RT rather than reflex WBRT.",
           immediateActions: [
-            "Dexamethasone 10 mg IV once, then commonly 4 mg PO/IV q6-12h if not contraindicated",
-            "Treat active seizure with benzodiazepine and start maintenance AED if seizure occurred",
-            "Obtain/confirm MRI brain with contrast",
-            "Discuss pathology goals if diagnosis is not yet established",
+            "Coordinate neurosurgical resection planning",
+            "Confirm pathology and postop imaging",
+            "Plan postoperative cavity RT after recovery",
           ],
-          consults: [
-            "Neurosurgery urgently",
-            "Medical oncology if new diagnosis or systemic options may rapidly help",
-            "Radiation oncology for post-op or non-operative contingency planning",
-          ],
+          consults: ["Neurosurgery", "Radiation oncology", "Medical oncology"],
           rtConsiderations: [
-            "Post-op cavity RT or WBRT depends on disease extent and goals",
-            "Emergent WBRT is uncommon when surgery can more rapidly relieve mass effect",
-          ],
-          notes: [
-            "Avoid reflex steroids if primary CNS lymphoma is a serious concern and diagnosis is not established.",
+            "Post-op cavity SRT often 25 Gy in 5 fractions",
+            "For larger or critical cavity cases, 27-30 Gy in 5 fractions may be considered",
           ],
         },
       },
       {
-        id: "wbtr-outcome",
-        prompt: "Diffuse symptomatic intracranial disease path",
-        detail: "Whole-brain based management.",
+        id: "systemic-outcome",
+        prompt: "Systemic-led pathway",
+        detail: "Nonresectable large lesion pathway from the figure.",
         outcome: {
-          title: "WBRT-Oriented Management",
+          title: "Systemic-Therapy-Led Evaluation With RT Technique Selection",
           urgency: "Moderate to high",
           summary:
-            "Use supportive care and multidisciplinary review, with WBRT favored when symptoms persist despite temporizing measures or disease burden is diffuse.",
+            "When the lesion is large but not resectable, the figure points toward systemic therapy review and then an RT technique chosen by disease distribution and goals.",
           immediateActions: [
-            "Steroids for edema / increased ICP symptoms",
-            "Antiemetics and supportive care",
-            "Trend neurologic exam over the first 48-72 hours",
-            "Begin memantine within 3 days of WBRT when appropriate",
+            "Review targeted or systemic options with CNS activity",
+            "Clarify if urgent symptom control is still needed from RT",
+            "Plan simulation approach and immobilization if RT proceeds",
           ],
-          consults: [
-            "Radiation oncology",
-            "Neurosurgery if any uncertainty about decompression options",
-            "Primary oncology team",
-          ],
+          consults: ["Medical oncology", "Radiation oncology", "Neurosurgery as needed"],
           rtConsiderations: [
-            "Typical dose: 30 Gy in 10 fractions",
-            "20 Gy in 5 fractions may be reasonable in poor prognosis situations",
-            "HA-WBRT may be considered selectively rather than in truly urgent unstable scenarios",
+            "WBRT or HA-WBRT may be needed if disease is diffuse",
+            "Focal techniques can still be considered selectively if anatomy allows",
           ],
         },
       },
       {
         id: "srs-outcome",
-        prompt: "Limited intracranial disease path",
-        detail: "Focal therapy is often not a same-day emergency.",
+        prompt: "Focal RT pathway",
+        detail: "SRS/SRT-style route.",
         outcome: {
-          title: "Focal Therapy / Non-Emergent RT Evaluation",
+          title: "Focal SRS / SRT Approach",
           urgency: "Moderate",
           summary:
-            "For limited symptomatic brain metastases, stabilize medically and evaluate for SRS or focal treatment instead of reflex WBRT.",
+            "For limited disease without a resection-led path, the figure favors focal radiation techniques rather than routine WBRT.",
           immediateActions: [
-            "Start steroids based on symptom burden",
-            "Manage seizures if present; no routine AED prophylaxis without seizure",
-            "Confirm MRI quality and lesion count",
+            "Confirm lesion count and size on high-quality MRI",
+            "Assess proximity to hippocampi and eloquent structures",
+            "Choose single-fraction or short-course focal treatment based on size",
           ],
-          consults: [
-            "Radiation oncology",
-            "Neurosurgery if lesion size, location, or edema raises surgical questions",
-          ],
+          consults: ["Radiation oncology", "Medical oncology"],
           rtConsiderations: [
-            "SRS dosing depends on lesion size and prior treatment",
-            "WBRT remains a fallback if disease burden or symptoms escalate",
-          ],
-        },
-      },
-    ],
-  },
-  {
-    id: "spinal-cord-compression",
-    title: "Epidural Spinal Cord Compression / Cauda Equina",
-    shortTitle: "Cord Compression",
-    category: "cns",
-    chiefComplaint:
-      "Back pain, weakness, numbness, gait change, urinary retention/incontinence, saddle anesthesia, fecal incontinence.",
-    synopsis:
-      "Decision support around steroids, Bilsky/SINS framing, surgical candidacy, and emergent RT timing for ESCC/CES.",
-    redFlags: [
-      "Rapidly progressive weakness",
-      "Saddle anesthesia",
-      "Urinary retention",
-      "Mechanical instability pain",
-      "Bowel or bladder dysfunction",
-    ],
-    workup: [
-      "Focused neurologic exam including dermatomes and rectal tone when needed",
-      "MRI total spine or involved region with contrast",
-      "Assess Bilsky ESCC grade and SINS score",
-      "Review prior RT history immediately",
-    ],
-    defaultConsults: [
-      "Neurosurgery / spine surgery",
-      "Radiation oncology",
-      "Medical oncology / inpatient oncology",
-    ],
-    commonDoseFx: [
-      "20-24 Gy in 5-6 fractions",
-      "30-36 Gy in 10-12 fractions",
-      "8 Gy x 1 usually reserved for pain without neurologic compromise",
-    ],
-    references: refs("cnsDeck", "manuscriptDoc", "paradigmDoc"),
-    nodes: [
-      {
-        id: "start",
-        prompt: "Is there major neurologic deficit, cauda equina syndrome, or imaging suggesting Bilsky 2-3 disease?",
-        detail:
-          "High-grade ESCC and evolving neurologic compromise usually need urgent decompression assessment.",
-        choices: [
-          { label: "Yes, high-risk compression", next: "surgical-candidate" },
-          { label: "No, lower-grade or slower symptoms", next: "rt-alone-check" },
-        ],
-      },
-      {
-        id: "surgical-candidate",
-        prompt: "Is the patient an acceptable surgical candidate without prohibitive barriers?",
-        detail:
-          "Consider performance status, goals of care, disease burden, and expected benefit from decompression/stabilization.",
-        choices: [
-          { label: "Yes, surgery feasible", next: "surgery-outcome" },
-          { label: "No, not a surgical candidate", next: "rt-alone-outcome" },
-        ],
-      },
-      {
-        id: "rt-alone-check",
-        prompt: "Is there mechanical instability concern by SINS or severe mechanical pain?",
-        detail:
-          "Instability changes the pathway even if epidural disease itself looks lower grade.",
-        choices: [
-          { label: "Yes, possible instability", next: "surgery-outcome" },
-          { label: "No, likely RT-first candidate", next: "rt-alone-outcome" },
-        ],
-      },
-      {
-        id: "surgery-outcome",
-        prompt: "Decompression-first path",
-        detail: "Surgery usually offers the best chance of neurologic preservation.",
-        outcome: {
-          title: "Urgent Surgical Decompression / Stabilization Path",
-          urgency: "High",
-          summary:
-            "Start steroids, control pain, and escalate promptly for neurosurgical evaluation because decompression and/or stabilization may provide the best neurologic outcome.",
-          immediateActions: [
-            "Dexamethasone 10 mg IV once followed by commonly 4 mg q6-12h",
-            "Full neurologic exam now and trend closely",
-            "Consider Foley if retention is present",
-            "Clarify prior RT exposure before any treatment plan is finalized",
-          ],
-          consults: [
-            "Neurosurgery / spine surgery urgently",
-            "Radiation oncology for post-op or non-operative backup planning",
-          ],
-          rtConsiderations: [
-            "Adjuvant RT is often needed after decompression",
-            "If surgery is delayed or impossible, same-day RT may still become necessary",
+            "SRS examples from the figure: <=2 cm 20 Gy x 1, 2-3 cm 18 Gy x 1, 3 cm 15 Gy x 1",
+            "Post-op cavity treatments are treated separately from intact-lesion SRS",
           ],
         },
       },
       {
-        id: "rt-alone-outcome",
-        prompt: "RT-first path",
-        detail: "For lower-grade disease or nonsurgical patients.",
+        id: "wb-outcome",
+        prompt: "Whole-brain pathway",
+        detail: "Diffuse or broader intracranial burden.",
         outcome: {
-          title: "Urgent RT-First Management",
-          urgency: "High",
+          title: "WBRT / HA-WBRT Pathway",
+          urgency: "Moderate",
           summary:
-            "For nonsurgical or lower-grade compression, use steroids and closely monitored urgent RT with generous but sensible field design.",
+            "If intracranial disease burden is not well served by focal treatment alone, the figure routes toward WBRT or hippocampal-avoidance WBRT with memantine when appropriate.",
           immediateActions: [
-            "Start steroids promptly",
-            "Trend exam within hours and daily",
-            "Assess pain type: biologic vs mechanical",
-            "Review prior radiation records before re-irradiation when possible",
+            "Assess candidacy for hippocampal avoidance",
+            "Start memantine if HA-WBRT or WBRT is chosen and clinically appropriate",
+            "Review simulation setup including aquaplast mask",
           ],
-          consults: [
-            "Radiation oncology urgently",
-            "Neurosurgery even if ultimate plan is RT alone when instability is uncertain",
-          ],
+          consults: ["Radiation oncology", "Medical oncology"],
           rtConsiderations: [
-            "Common regimens include 20-24 Gy in 5-6 fx or 30-36 Gy in 10-12 fx",
-            "Avoid PA-only thoracolumbar fields if treating emergently without CT sim",
-            "Reserve 8 Gy x 1 mainly for pain indications without major neurologic deficits",
+            "WBRT 30 Gy in 10 fractions",
+            "HA-WBRT 30 Gy in 10 fractions + memantine for 6 months when appropriate",
           ],
         },
       },
@@ -340,124 +266,124 @@ export const emergencyFlows: EmergencyFlow[] = [
     shortTitle: "LMD",
     category: "cns",
     chiefComplaint:
-      "Headache, nausea/vomiting, cranial neuropathies, radicular pain, cauda equina symptoms, multifocal deficits.",
+      "Headache, nausea/vomiting, cranial neuropathies, multifocal deficits, radicular pain, or cauda equina symptoms.",
     synopsis:
-      "A structured path for suspected leptomeningeal disease centered on stabilization, neuroaxis workup, and goals-of-care aligned RT/systemic options.",
+      "Confirm the diagnosis, address symptoms first, then decide whether treatment is bridging to systemic therapy or primarily symptom-directed.",
     redFlags: [
-      "Altered mental status",
-      "Signs of elevated ICP",
-      "Seizure",
-      "Rapidly progressive multifocal deficits",
+      "Hydrocephalus or elevated ICP concern",
+      "Rapid neurologic decline",
+      "Cranial neuropathies",
       "Cauda equina symptoms",
+      "Poor performance status with uncontrolled symptoms",
     ],
     workup: [
-      "Neuro exam including cranial nerves and cerebellar signs",
-      "MRI brain and spine with contrast using dedicated protocols",
-      "Consider LP/CSF analysis when safe",
-      "Assess systemic disease status and actionable genomics",
+      "Confirm diagnosis with MRI and CSF studies when feasible",
+      "Clarify whether symptoms are present and controlled",
+      "Assess KPS and bridge-to-systemic-therapy potential",
+      "Review targeted and intrathecal options",
     ],
-    defaultConsults: [
-      "Neuro-oncology",
-      "Neurosurgery",
-      "Radiation oncology",
-    ],
+    defaultConsults: ["Neuro-oncology", "Neurosurgery", "Radiation oncology", "Medical oncology"],
     commonDoseFx: [
-      "WBRT or CSI 30 Gy in 10 fractions in selected patients",
-      "IFRT to symptomatic sites can be appropriate",
+      "CSI in selected bridge-to-systemic-therapy scenarios",
+      "Symptom-directed RT when focal control is the priority",
     ],
-    references: refs("cnsDeck", "manuscriptDoc"),
+    citations: citations("cns", "manuscript"),
+    figures: figures("lmd1", "lmd2"),
     nodes: [
       {
         id: "start",
-        prompt: "Is there acute elevated ICP, seizure, or hydrocephalus concern requiring immediate stabilization?",
-        detail:
-          "These patients often need urgent medical and procedural support before definitive RT decisions.",
+        prompt: "After LMD is suspected, has the diagnosis been confirmed and are symptoms present?",
+        detail: "The first figure is diagnosis-first, then symptom-based.",
         choices: [
-          { label: "Yes, unstable", next: "unstable-outcome" },
-          { label: "No, stable enough for complete staging", next: "staging" },
+          { label: "Symptomatic", next: "symptom-control" },
+          { label: "Asymptomatic", next: "bridge-check" },
         ],
       },
       {
-        id: "staging",
-        prompt: "Is the patient a candidate for disease-directed therapy after goals-of-care review?",
-        detail:
-          "LMD management depends heavily on performance status, bulky disease, genomics, and prognosis.",
+        id: "symptom-control",
+        prompt: "Are symptoms reasonably controlled after initial symptomatic treatment?",
+        detail: "The second figure pivots on symptom control before bridge-to-systemic planning.",
         choices: [
-          { label: "Yes, disease-directed therapy is reasonable", next: "directed-outcome" },
-          { label: "No, symptom-focused approach is most appropriate", next: "supportive-outcome" },
+          { label: "Yes, symptoms controlled", next: "bridge-check" },
+          { label: "No, symptoms not controlled", next: "no-bridge-check" },
         ],
       },
       {
-        id: "unstable-outcome",
-        prompt: "Stabilization path",
-        detail: "Treat the immediate neurologic threat first.",
+        id: "bridge-check",
+        prompt: "Is the patient being bridged to additional systemic or targeted therapy?",
+        detail: "The LMD treatment figure separates bridge-to-systemic candidates from non-bridge pathways.",
+        choices: [
+          { label: "Yes, bridge to systemic therapy", next: "bridge-outcome" },
+          { label: "No, not really a bridge scenario", next: "no-bridge-check" },
+        ],
+      },
+      {
+        id: "no-bridge-check",
+        prompt: "If not bridging, is performance status poor enough that treatment should stay symptom-only?",
+        detail: "The figure explicitly calls out KPS <60 and symptom-only treatment.",
+        choices: [
+          { label: "KPS < 60 / poor reserve", next: "symptom-only-outcome" },
+          { label: "KPS >= 60 / still considering disease-directed care", next: "goc-outcome" },
+        ],
+      },
+      {
+        id: "bridge-outcome",
+        prompt: "Bridge-to-systemic pathway",
+        detail: "CSI plus downstream targeted or IT therapy.",
         outcome: {
-          title: "Urgent Stabilization Before RT Selection",
-          urgency: "High",
+          title: "Bridge-to-Systemic-Therapy LMD Path",
+          urgency: "Moderate",
           summary:
-            "Manage edema, seizure risk, and hydrocephalus concerns first, then complete multidisciplinary assessment before choosing focal RT, WBRT, CSI, or systemic therapy.",
+            "When symptoms are controlled or the patient is asymptomatic and the goal is bridging to systemic therapy, the figure supports considering CSI followed by targeted and/or intrathecal therapy.",
           immediateActions: [
-            "Dexamethasone 10 mg IV then commonly 4 mg q6h",
-            "Treat seizures with benzodiazepine then maintenance AED if seizure occurred",
-            "Urgent brain imaging and consider neurosurgical CSF diversion discussion",
+            "Confirm treatment history and actionable genomics",
+            "Coordinate symptom control measures such as LP, shunt, medications, or focal RT as needed",
+            "Discuss bridge intent clearly with the multidisciplinary team",
           ],
-          consults: [
-            "Neurosurgery",
-            "Neuro-oncology",
-            "Radiation oncology",
-          ],
+          consults: ["Neuro-oncology", "Medical oncology", "Radiation oncology", "Neurosurgery"],
           rtConsiderations: [
-            "Emergent WBRT is uncommon unless symptoms persist and disease burden clearly supports it",
-            "Symptomatic-site IFRT may be preferred over broad fields in some patients",
+            "Consider CSI in selected bridge scenarios",
+            "Integrate RT timing with targeted therapy or intrathecal therapy plans",
           ],
         },
       },
       {
-        id: "directed-outcome",
-        prompt: "Disease-directed LMD path",
-        detail: "Selected patients can receive active therapy.",
+        id: "goc-outcome",
+        prompt: "Non-bridge disease-directed pathway",
+        detail: "Goals-of-care discussion still allows CSI consideration.",
         outcome: {
-          title: "Multidisciplinary Disease-Directed Therapy",
+          title: "Goals-of-Care-Guided LMD Management",
           urgency: "Moderate",
           summary:
-            "Complete staging, align with goals of care, and individualize among systemic therapy, intrathecal therapy, symptomatic-site RT, WBRT, or CSI.",
+            "If the patient is not clearly bridging to systemic therapy but still has adequate reserve, the figure routes through goals-of-care discussion and selective CSI consideration.",
           immediateActions: [
-            "Complete neuroaxis imaging",
-            "Assess CSF studies if safe and useful",
-            "Review actionable genomics and treatment history",
+            "Hold a goals-of-care discussion with patient and primary team",
+            "Continue symptom treatment while reassessing disease-directed benefit",
           ],
-          consults: [
-            "Neuro-oncology",
-            "Medical oncology",
-            "Radiation oncology",
-          ],
+          consults: ["Neuro-oncology", "Radiation oncology", "Palliative care"],
           rtConsiderations: [
-            "CSI or WBRT 30 Gy in 10 fx may be used in selected patients",
-            "IFRT to symptomatic bulky or focal sites remains important",
+            "Consider CSI selectively if the burden and goals support it",
+            "Keep expectations focused on symptom relief and treatment burden",
           ],
         },
       },
       {
-        id: "supportive-outcome",
-        prompt: "Supportive-focused LMD path",
-        detail: "When burdens of aggressive therapy outweigh benefit.",
+        id: "symptom-only-outcome",
+        prompt: "Symptom-only pathway",
+        detail: "Poor reserve or high burden.",
         outcome: {
-          title: "Symptom-Focused / Limited RT Approach",
+          title: "Symptomatic Treatment Only",
           urgency: "Moderate",
           summary:
-            "Use steroids, seizure management, pain support, and carefully selected focal RT only if expected to improve symptoms without causing disproportionate burden.",
+            "For poor-performance patients, the figure supports staying symptom-directed with shunt, LP, medications, and focal RT only where benefit is clear.",
           immediateActions: [
-            "Clarify goals of care with patient/family and primary team",
-            "Use steroids and symptom-directed medications",
-            "Consider palliative care involvement early",
+            "Treat hydrocephalus or pressure symptoms if present",
+            "Use steroids, analgesics, and other symptom-directed medications",
+            "Consider CSF diversion or LP when appropriate",
           ],
-          consults: [
-            "Palliative care",
-            "Radiation oncology if focal symptom palliation is under consideration",
-          ],
+          consults: ["Palliative care", "Neurosurgery", "Radiation oncology as needed"],
           rtConsiderations: [
-            "Avoid reflex large-field treatment if benefit is unlikely to be realized",
-            "Focal symptomatic-site RT can still be reasonable in select cases",
+            "Favor selective symptom-directed RT over broad-field treatment when reserve is poor",
           ],
         },
       },
@@ -469,125 +395,103 @@ export const emergencyFlows: EmergencyFlow[] = [
     shortTitle: "Hemoptysis",
     category: "thoracic",
     chiefComplaint:
-      "Coughing up blood ranging from blood-streaked sputum to massive or rapidly fatal hemorrhage.",
+      "Coughing up blood ranging from blood-streaked sputum to unstable massive hemoptysis.",
     synopsis:
-      "Thoracic bleeding algorithm focused on airway safety, bronchoscopy/interventional triage, and when palliative thoracic RT becomes appropriate.",
+      "Assess stability and bleeding volume first, then localize tumor-associated bleeding and coordinate bronchoscopy before durable RT.",
     redFlags: [
       "Massive hemoptysis",
-      "Inability to clear airway",
+      "Airway compromise",
       "Hemodynamic instability",
-      "Escalating transfusion requirement",
-      "Concern for major vessel erosion",
+      "Rapidly increasing bleeding volume",
+      "Need for transfusion support",
     ],
     workup: [
-      "Quantify amount and tempo of bleeding",
-      "Assess airway protection and oxygen needs",
-      "CBC and relevant coagulation labs",
-      "CT chest with contrast or CT angiography",
+      "Assess hemodynamic stability and respiratory status",
+      "Quantify bleeding volume",
+      "CBC, INR if relevant, and contrast chest imaging / CTA",
+      "Review anticoagulation and recent central thoracic treatments",
     ],
-    defaultConsults: [
-      "Interventional pulmonology",
-      "Critical care / airway team",
-      "Radiation oncology",
-      "Interventional radiology as needed",
-    ],
-    commonDoseFx: [
-      "8 Gy x 1",
-      "20 Gy in 5 fractions",
-      "30 Gy in 10 fractions",
-    ],
-    references: refs("hemoptysisDeck", "thoracicDeck", "manuscriptDoc"),
+    defaultConsults: ["Interventional pulmonology", "Critical care", "Radiation oncology"],
+    commonDoseFx: ["8 Gy x 1", "20 Gy in 5 fractions", "30 Gy in 10 fractions"],
+    citations: citations("thoracicHemoptysis", "manuscript"),
+    figures: figures("hemoptysis"),
     nodes: [
       {
         id: "start",
-        prompt: "Is this massive hemoptysis or otherwise airway/hemodynamically unstable bleeding?",
-        detail:
-          "Life-threatening hemoptysis is primarily a non-radiation emergency at first presentation.",
+        prompt: "Is this unstable or massive hemoptysis?",
+        detail: "The figure separates unstable massive hemoptysis from stable small-volume bleeding immediately.",
         choices: [
           { label: "Yes, unstable / massive", next: "unstable-outcome" },
-          { label: "No, smaller volume and relatively stable", next: "stable-path" },
+          { label: "No, stable / smaller volume", next: "tumor-check" },
         ],
       },
       {
-        id: "stable-path",
-        prompt: "Has the bleeding source been localized and acutely stabilized?",
-        detail:
-          "Bronchoscopy and other interventions often come before RT so the patient can safely proceed to simulation and treatment.",
+        id: "tumor-check",
+        prompt: "After workup, is tumor-associated bleeding the likely source?",
+        detail: "The stable branch proceeds through workup to tumor-associated bleeding and bronchoscopy coordination.",
         choices: [
-          { label: "Yes, stabilized", next: "rt-outcome" },
-          { label: "No, still needs localization/intervention", next: "procedure-outcome" },
+          { label: "Yes, tumor-associated bleeding", next: "tumor-outcome" },
+          { label: "No / unclear / alternative source likely", next: "alternate-outcome" },
         ],
       },
       {
         id: "unstable-outcome",
-        prompt: "Immediate rescue path",
-        detail: "Airway and hemorrhage control take priority.",
+        prompt: "Emergent rescue pathway",
+        detail: "Airway and hemodynamic stabilization first.",
         outcome: {
-          title: "Emergent Airway / Procedural Management First",
+          title: "Emergent Non-Radiation Management First",
           urgency: "Critical",
           summary:
-            "Massive hemoptysis should be treated first as an airway and resuscitation emergency. Radiation is not the first stabilizing move.",
+            "For unstable or massive hemoptysis, the figure prioritizes transfusion, airway/hemodynamic support, and bronchoscopic intervention before any RT planning.",
           immediateActions: [
-            "Activate airway support and consider intubation if airway protection is threatened",
-            "Transfuse and resuscitate as needed",
-            "Hold/reverse anticoagulation when appropriate",
-            "Obtain urgent imaging if it does not delay lifesaving intervention",
+            "Stabilize airway and hemodynamics immediately",
+            "Transfuse as needed",
+            "Coordinate urgent bronchoscopic intervention if possible",
           ],
-          consults: [
-            "Critical care / anesthesia airway team",
-            "Interventional pulmonology",
-            "Interventional radiology for possible embolization",
-          ],
+          consults: ["Critical care", "Interventional pulmonology", "Radiation oncology after stabilization"],
           rtConsiderations: [
-            "RT becomes reasonable after acute stabilization for more durable bleeding control",
-            "Do not delay urgent non-radiation interventions for simulation",
+            "Do not delay rescue management for simulation",
+            "RT becomes a durable-control step after stabilization",
           ],
         },
       },
       {
-        id: "procedure-outcome",
-        prompt: "Stabilize before RT path",
-        detail: "Localize and temporize the bleed first.",
+        id: "tumor-outcome",
+        prompt: "Tumor-associated stable hemoptysis pathway",
+        detail: "Bronchoscopy coordination then RT.",
         outcome: {
-          title: "Bronchoscopic / Interventional Localization First",
+          title: "Bronchoscopy Coordination Then Durable RT",
           urgency: "High",
           summary:
-            "When bleeding is ongoing but not yet catastrophic, bronchoscopy and related interventions often establish diagnosis, localize the source, and improve safety before RT.",
+            "For stable tumor-associated hemoptysis, the figure supports bronchoscopy to localize or treat bleeding, then palliative RT for durable control.",
           immediateActions: [
-            "CT chest with contrast or CT angio",
-            "CBC and coagulation review",
-            "Coordinate bronchoscopy for localization and local therapy when indicated",
+            "Review anticoagulation and transfusion needs",
+            "Coordinate bronchoscopy for diagnosis, localization, and local interventions",
+            "Obtain contrast chest imaging or CTA",
           ],
-          consults: [
-            "Interventional pulmonology",
-            "Radiation oncology",
-          ],
+          consults: ["Interventional pulmonology", "Radiation oncology"],
           rtConsiderations: [
-            "Once stabilized, standard palliative thoracic regimens are reasonable",
-            "If disease is potentially curable, avoid compromising definitive planning unnecessarily",
+            "Palliative regimens in the figure include 8 Gy x 1, 20 Gy in 5 fx, and 30 Gy in 10 fx",
+            "Expect initial response within 1-5 days and maximal response by around 2 weeks",
           ],
         },
       },
       {
-        id: "rt-outcome",
-        prompt: "Durable-control RT path",
-        detail: "RT after stabilization.",
+        id: "alternate-outcome",
+        prompt: "Alternate-source pathway",
+        detail: "Do not anchor on tumor too early.",
         outcome: {
-          title: "Palliative Thoracic RT for Durable Bleeding Control",
-          urgency: "Moderate to high",
+          title: "Clarify Source Before RT",
+          urgency: "Moderate",
           summary:
-            "After airway and hemodynamic stabilization, thoracic RT can reduce recurrent tumor-related bleeding risk over days to weeks.",
+            "If tumor-associated bleeding is not yet clear, finish localization and manage alternative causes before using thoracic RT as the answer.",
           immediateActions: [
-            "Confirm bleeding is tumor-related and sufficiently stabilized to simulate",
-            "Review prior thoracic RT and risk factors such as central SBRT or bevacizumab exposure",
+            "Complete chest imaging and relevant labs",
+            "Review anticoagulation, prior bronchoscopy, and recent therapies such as bevacizumab or central SBRT",
           ],
-          consults: [
-            "Radiation oncology",
-            "Interventional pulmonology if source control remains fragile",
-          ],
+          consults: ["Interventional pulmonology", "Primary team"],
           rtConsiderations: [
-            "Common regimens: 8 Gy x 1, 20 Gy in 5 fx, 30 Gy in 10 fx",
-            "Aggressive combined-modality approaches may be used selectively",
+            "Use RT once tumor-associated bleeding is established and the patient is stable enough",
           ],
         },
       },
@@ -599,125 +503,103 @@ export const emergencyFlows: EmergencyFlow[] = [
     shortTitle: "Airway Obstruction",
     category: "thoracic",
     chiefComplaint:
-      "Dyspnea, stridor, wheeze, oxygen need, chest discomfort, post-obstructive symptoms.",
+      "Dyspnea, escalating oxygen needs, chest pain, or post-obstructive pulmonary symptoms.",
     synopsis:
-      "Interactive pathway for malignant airway obstruction centered on respiratory stability, bronchoscopy/stenting, and RT as a consolidative or palliative step.",
+      "Assess respiratory status first, then branch by histology toward urgent bronchoscopy/stenting, chemotherapy, or RT.",
     redFlags: [
-      "Respiratory distress",
-      "Need for escalating oxygen",
-      "Stridor",
-      "Impending respiratory failure",
-      "Complete or near-complete central airway narrowing",
+      "Respiratory instability",
+      "Need for supplemental oxygen",
+      "Impending airway failure",
+      "Post-obstructive pneumonia with obstruction",
+      "Proximal airway compromise",
     ],
     workup: [
-      "Assess current respiratory status and need for airway protection",
-      "CT chest with contrast",
-      "Review baseline pulmonary reserve and comorbidities",
-      "If new diagnosis, coordinate biopsy and selected labs",
+      "Respiratory assessment including supplemental oxygen need",
+      "CT chest with or without contrast",
+      "Pulmonary baseline and cancer history",
+      "Biopsy and selected labs if diagnosis is new",
     ],
-    defaultConsults: [
-      "Interventional pulmonology",
-      "Critical care / anesthesia if tenuous",
-      "Radiation oncology",
-      "Medical oncology",
-    ],
-    commonDoseFx: [
-      "8 Gy x 1",
-      "20 Gy in 5 fractions",
-      "30 Gy in 10 fractions",
-      "17 Gy in 2 fractions once weekly",
-    ],
-    references: refs("airwayDeck", "thoracicDeck", "manuscriptDoc"),
+    defaultConsults: ["Interventional pulmonology", "Medical oncology", "Radiation oncology"],
+    commonDoseFx: ["8 Gy x 1", "20 Gy in 5 fractions", "30 Gy in 10 fractions", "17 Gy in 2 weekly fractions"],
+    citations: citations("thoracicAirway", "manuscript"),
+    figures: figures("airway"),
     nodes: [
       {
         id: "start",
-        prompt: "Is the respiratory status unstable right now?",
-        detail:
-          "If the patient is tenuous, procedural airway management usually works faster than external beam RT.",
+        prompt: "Is the patient unstable from airway compromise right now?",
+        detail: "The airway figure makes respiratory stability and oxygen requirement the first fork.",
         choices: [
           { label: "Yes, unstable", next: "unstable-outcome" },
-          { label: "No, stable enough for broader planning", next: "histology-check" },
+          { label: "No, stable enough for workup", next: "histology-check" },
         ],
       },
       {
         id: "histology-check",
-        prompt: "Is histology one where systemic therapy may be the best initial tumor-directed move?",
-        detail:
-          "Examples include lymphoma, germ cell tumor, and SCLC in the right clinical context.",
+        prompt: "Does the obstructive malignancy look like lymphoma, germ cell tumor, or SCLC?",
+        detail: "The figure separates chemo-sensitive histologies from NSCLC/metastatic disease.",
         choices: [
-          { label: "Yes, chemo-sensitive histology likely", next: "systemic-outcome" },
-          { label: "No / unclear / local palliation needed", next: "rt-outcome" },
+          { label: "Yes, likely lymphoma / germ cell / SCLC", next: "chemo-outcome" },
+          { label: "No, more likely NSCLC or metastatic disease", next: "procedural-rt-outcome" },
         ],
       },
       {
         id: "unstable-outcome",
-        prompt: "Urgent procedural path",
-        detail: "Stent, debulk, ablate, or secure the airway first.",
+        prompt: "Airway rescue pathway",
+        detail: "Urgent procedural intervention first.",
         outcome: {
-          title: "Airway Intervention Before RT",
+          title: "Emergent Non-Radiation Airway Management",
           urgency: "Critical",
           summary:
-            "Patients with unstable malignant airway obstruction usually need immediate airway-focused intervention before considering RT.",
+            "For unstable airway obstruction, the figure prioritizes airway management and urgent bronchoscopy with stenting, laser ablation, or endobronchial tumor resection.",
           immediateActions: [
-            "Support oxygenation and escalate airway management",
-            "Urgent bronchoscopy evaluation for stent, debulking, or laser/ablative therapy",
-            "CT chest if it does not delay airway rescue",
+            "Secure the airway and support oxygenation",
+            "Coordinate bronchoscopy with stenting, laser ablation, or endobronchial resection",
+            "Treat post-obstructive infection if present",
           ],
-          consults: [
-            "Interventional pulmonology urgently",
-            "Critical care / anesthesia",
-            "Radiation oncology for post-stabilization planning",
-          ],
+          consults: ["Interventional pulmonology", "Critical care", "Radiation oncology after stabilization"],
           rtConsiderations: [
-            "RT is often most useful after the airway is opened to reduce re-obstruction risk",
-            "If elective intubation is needed to safely simulate, coordinate before transport",
+            "RT is usually downstream of procedural airway rescue",
+            "Response is best when RT is combined with stenting or other intervention",
           ],
         },
       },
       {
-        id: "systemic-outcome",
+        id: "chemo-outcome",
         prompt: "Chemo-sensitive pathway",
-        detail: "Not every airway tumor should go straight to RT.",
+        detail: "Histology-first route.",
         outcome: {
-          title: "Systemic Therapy-Led Multidisciplinary Path",
-          urgency: "Moderate to high",
+          title: "Chemotherapy-Led Initial Management",
+          urgency: "High",
           summary:
-            "For selected histologies such as lymphoma, germ cell tumor, or SCLC, systemic therapy may offer the most effective initial tumor response, with RT used selectively.",
+            "For lymphoma, germ cell tumor, or SCLC, the figure directs initial treatment toward chemotherapy rather than default upfront RT.",
           immediateActions: [
-            "Secure tissue diagnosis if not established",
-            "Review whether any procedural airway intervention is still needed despite chemo sensitivity",
+            "Confirm tissue diagnosis rapidly",
+            "Assess whether bronchoscopy or stenting is still needed despite chemo sensitivity",
           ],
-          consults: [
-            "Medical oncology",
-            "Interventional pulmonology",
-            "Radiation oncology",
-          ],
+          consults: ["Medical oncology", "Interventional pulmonology", "Radiation oncology"],
           rtConsiderations: [
-            "Definitive or palliative RT may still be needed depending on stage and response",
+            "RT may still be needed later for definitive or palliative consolidation",
           ],
         },
       },
       {
-        id: "rt-outcome",
-        prompt: "RT-inclusive airway path",
-        detail: "Stable enough for simulation and treatment.",
+        id: "procedural-rt-outcome",
+        prompt: "NSCLC / metastatic pathway",
+        detail: "Coordinate interventional pulmonology before RT.",
         outcome: {
-          title: "Palliative or Definitive RT After Airway Assessment",
-          urgency: "Moderate to high",
+          title: "Interventional Pulmonology Coordination Then RT",
+          urgency: "High",
           summary:
-            "When the patient is stable enough and local disease control is needed, RT can be used after or alongside interventional planning for longer-term control.",
+            "For NSCLC or metastatic obstruction, the figure supports bronchoscopy-based intervention first when needed, followed by palliative or definitive RT depending on stage and goals.",
           immediateActions: [
-            "Confirm respiratory stability for CT simulation",
-            "Coordinate with pulmonology if stenting or debulking could improve safety or efficacy first",
+            "Coordinate with interventional pulmonology for stent placement, laser ablation, or endobronchial resection",
+            "Review CT chest and current oxygen requirement",
+            "Watch for stent displacement or improved aeration during treatment",
           ],
-          consults: [
-            "Radiation oncology",
-            "Interventional pulmonology",
-            "Medical oncology if newly diagnosed or potentially definitive",
-          ],
+          consults: ["Interventional pulmonology", "Radiation oncology", "Medical oncology"],
           rtConsiderations: [
-            "Palliative regimens include 8 Gy x 1, 20 Gy in 5 fx, 30 Gy in 10 fx, or 17 Gy in 2 weekly fx",
-            "Monitor for stent position changes and aeration changes during treatment",
+            "Palliative EBRT regimens in the figure: 8 Gy x 1, 20 Gy in 5 fx, 30 Gy in 10 fx, 17 Gy in 2 weekly fx",
+            "Shorter regimens minimize time in department for unstable patients",
           ],
         },
       },
@@ -725,126 +607,177 @@ export const emergencyFlows: EmergencyFlow[] = [
   },
   {
     id: "tumor-bleeding",
-    title: "Abdominal / Pelvic Tumor Bleeding",
+    title: "Tumor Bleeding",
     shortTitle: "Tumor Bleeding",
     category: "bleeding",
     chiefComplaint:
-      "Hematemesis, hematochezia, melena, hematuria, vaginal bleeding, or occult tumor-associated anemia.",
+      "Tumor-associated bleeding from GI, GU, gynecologic, cutaneous, rectal, or nasal sites.",
     synopsis:
-      "Algorithm for tumor-related bleeding across GI/GU/gynecologic sites with emphasis on stabilization, source control, and palliative RT timing.",
+      "Stabilize first, confirm the bleed is tumor-related, then route to the fastest site-specific local control option before or alongside RT.",
     redFlags: [
       "Hemodynamic instability",
       "Continuous transfusion need",
+      "Brisk bleeding",
       "Rapid hemoglobin drop",
-      "Active brisk bleeding requiring packing or tamponade",
+      "Need for immediate local hemostasis",
     ],
     workup: [
-      "CBC and coagulation studies",
-      "Site-directed exam where useful",
-      "CT angiography or cross-sectional imaging when embolization is being considered",
-      "Endoscopy, cystoscopy, or gynecologic exam as indicated",
+      "CBC, CMP, PT/PTT/INR",
+      "Medication review including anticoagulation",
+      "CT angiography and endoscopy/procedures as indicated",
+      "Rule out non-tumor bleeding differentials",
     ],
-    defaultConsults: [
-      "Relevant procedural team: GI, IR, urology, gynecologic oncology, surgery",
-      "Radiation oncology",
-    ],
-    commonDoseFx: [
-      "20 Gy in 5 fractions",
-      "30 Gy in 10 fractions",
-      "8 Gy x 1 in selected settings",
-      "Hypofractionation preferred in many gynecologic bleeding scenarios",
-    ],
-    references: refs("bleedingDeck", "manuscriptDoc", "giDeck"),
+    defaultConsults: ["IR", "GI / procedural team", "Surgery", "Radiation oncology"],
+    commonDoseFx: ["20 Gy in 5 fractions", "30 Gy in 10 fractions", "8 Gy x 1", "12 Gy in 3 fractions", "Quad shot"],
+    citations: citations("bleeding", "manuscript"),
+    figures: figures("bleeding"),
     nodes: [
       {
         id: "start",
-        prompt: "Is the patient hemodynamically unstable or continuously transfusion dependent?",
-        detail:
-          "If yes, acute stabilization and local hemostasis come before expecting RT to work.",
+        prompt: "Is the patient unstable or needing ongoing inpatient transfusion-level support?",
+        detail: "The figure begins with inpatient vs outpatient/hemodynamic assessment.",
         choices: [
-          { label: "Yes, unstable", next: "unstable-outcome" },
-          { label: "No, stabilized / lower acuity", next: "source-control-check" },
+          { label: "Yes, unstable / inpatient level", next: "source-check" },
+          { label: "No, outpatient but still concerning", next: "source-check" },
         ],
       },
       {
-        id: "source-control-check",
-        prompt: "Is there a procedural option likely to provide faster local hemostasis?",
-        detail:
-          "Embolization, endoscopic cautery, packing, tamponade, stenting, or surgery may bridge to RT.",
+        id: "source-check",
+        prompt: "After workup, is this tumor-associated bleeding?",
+        detail: "The figure explicitly routes through non-tumor differential diagnosis before treatment selection.",
         choices: [
-          { label: "Yes, likely procedural bridge", next: "procedure-outcome" },
-          { label: "No, RT can be primary local palliation", next: "rt-outcome" },
+          { label: "Yes, tumor-associated", next: "site-check" },
+          { label: "No / unclear / likely non-tumor", next: "nontumor-outcome" },
         ],
       },
       {
-        id: "unstable-outcome",
-        prompt: "Immediate rescue path",
-        detail: "Stabilize and localize the bleeding first.",
+        id: "site-check",
+        prompt: "Which immediate local-control pathway fits best?",
+        detail: "Choose the most direct local option from the figure before assuming RT is first.",
+        choices: [
+          { label: "Cutaneous bleeding", next: "dressings-outcome" },
+          { label: "Nasal, vaginal, or rectal bleeding", next: "packing-outcome" },
+          { label: "Endoscopically accessible and patient can undergo procedure", next: "endoscopic-outcome" },
+          { label: "Brisk bleed with vessel seen on CTA", next: "embolization-outcome" },
+          { label: "None of the above / persistent uncontrolled tumor bleeding", next: "rt-outcome" },
+        ],
+      },
+      {
+        id: "nontumor-outcome",
+        prompt: "Non-tumor differential pathway",
+        detail: "Do not anchor on malignancy too early.",
         outcome: {
-          title: "Resuscitation and Local Hemostasis First",
-          urgency: "Critical",
+          title: "Clarify Non-Tumor Bleeding Causes First",
+          urgency: "Moderate",
           summary:
-            "Tumor bleeding rarely behaves like an RT-only emergency in the first minutes to hours. Resuscitation and procedural hemostasis usually come first.",
+            "The figure lists iatrogenic, coagulopathic, infectious, and benign site-specific causes that should be sorted out before reflex tumor-directed RT.",
           immediateActions: [
-            "Transfuse and correct coagulopathy",
-            "Hold anticoagulation when clinically feasible",
-            "Use local hemostatic measures such as packing or tamponade when applicable",
-            "Identify bleeding source with imaging and/or endoscopy",
+            "Review medications and interventions",
+            "Correct anticoagulation or coagulopathy where appropriate",
+            "Pursue site-specific diagnostic workup",
           ],
-          consults: [
-            "IR / endoscopy / surgery / specialty service based on source",
-            "Radiation oncology for downstream durable control planning",
-          ],
+          consults: ["Primary team", "Relevant procedural service"],
           rtConsiderations: [
-            "RT response may take days to weeks",
-            "Do not overpromise immediate bleeding cessation from the first fractions",
+            "Reserve RT for confirmed tumor-associated bleeding or after local alternatives fail",
           ],
         },
       },
       {
-        id: "procedure-outcome",
-        prompt: "Bridge-to-RT path",
-        detail: "Fastest intervention first, then durable control.",
+        id: "dressings-outcome",
+        prompt: "Cutaneous local-care pathway",
+        detail: "Dressings first.",
         outcome: {
-          title: "Procedure First, Then Consider RT for Durability",
+          title: "Dressings and Local Hemostatic Care",
           urgency: "High",
           summary:
-            "When a faster procedural hemostatic option exists, use it to stabilize the patient and consider RT afterward to reduce recurrent tumor bleeding.",
+            "For cutaneous bleeding, the figure favors non-adherent dressings and local absorbable paste before escalating further.",
           immediateActions: [
-            "Coordinate endoscopic, IR, urologic, gynecologic, or surgical intervention",
-            "Trend CBC and transfusion requirement",
+            "Use non-adherent dressings",
+            "Consider local absorbable hemostatic paste",
+            "Escalate if bleeding remains uncontrolled",
           ],
-          consults: [
-            "Relevant procedural service",
-            "Radiation oncology",
-          ],
+          consults: ["Wound care", "Radiation oncology if bleeding persists"],
           rtConsiderations: [
-            "Common palliative regimens include 20 Gy in 5 fx or 30 Gy in 10 fx",
-            "Shorter regimens may be useful when prognosis is limited or definitive treatment remains possible later",
+            "RT remains reasonable if local wound measures do not control tumor bleeding",
+          ],
+        },
+      },
+      {
+        id: "packing-outcome",
+        prompt: "Packing pathway",
+        detail: "Rectal, vaginal, and similar sites.",
+        outcome: {
+          title: "Packing / Local Hemostatic Measures",
+          urgency: "High",
+          summary:
+            "For nasal, vaginal, or rectal bleeding, the figure routes toward packing-based hemostatic control before or alongside RT.",
+          immediateActions: [
+            "Use packing and local hemostatic agents",
+            "For vaginal bleeding, consider formalin-soaked gauze, Monsel solution, or Mohs paste where appropriate",
+          ],
+          consults: ["Gynecology / site-specific team", "Radiation oncology"],
+          rtConsiderations: [
+            "Brachytherapy can be considered for vaginal bleeding",
+            "EBRT remains an option if local packing is insufficient",
+          ],
+        },
+      },
+      {
+        id: "endoscopic-outcome",
+        prompt: "Endoscopic hemostasis pathway",
+        detail: "Procedure-first route.",
+        outcome: {
+          title: "Endoscopic Treatment First",
+          urgency: "High",
+          summary:
+            "If the tumor is accessible and the patient can tolerate endoscopy, the figure favors cautery, APC, clipping, injection therapy, or laser therapy before defaulting to RT.",
+          immediateActions: [
+            "Coordinate endoscopic treatment promptly",
+            "Monitor if bleeding remains uncontrolled after procedure",
+          ],
+          consults: ["GI / endoscopy", "Radiation oncology"],
+          rtConsiderations: [
+            "Move to RT if endoscopic treatment fails or bleeding recurs",
+          ],
+        },
+      },
+      {
+        id: "embolization-outcome",
+        prompt: "CTA-to-embolization pathway",
+        detail: "Brisk bleeding route.",
+        outcome: {
+          title: "IR Embolization for Brisk Bleeding",
+          urgency: "Critical",
+          summary:
+            "When a bleeding vessel is identified on CT angiography, the figure routes to IR embolization with coils or sclerosing agents.",
+          immediateActions: [
+            "Obtain/confirm CTA localization",
+            "Coordinate urgent IR embolization",
+            "Continue transfusion and hemodynamic support as needed",
+          ],
+          consults: ["Interventional radiology", "Radiation oncology"],
+          rtConsiderations: [
+            "Use RT for downstream durable control if embolization alone is insufficient",
           ],
         },
       },
       {
         id: "rt-outcome",
-        prompt: "RT-primary palliation path",
-        detail: "When bleeding is tumor related and the patient is stable enough to proceed.",
+        prompt: "Radiation treatment pathway",
+        detail: "When persistent tumor bleeding still needs durable control.",
         outcome: {
-          title: "Palliative RT for Tumor Bleeding",
+          title: "RT for Persistent Tumor-Associated Bleeding",
           urgency: "Moderate to high",
           summary:
-            "For stabilized tumor-associated bleeding without a superior rapid procedural option, palliative RT is a reasonable route to durable symptom control.",
+            "If bleeding remains uncontrolled or no faster site-specific option is sufficient, the figure supports RT as a durable local-control option.",
           immediateActions: [
-            "Confirm source and disease extent",
-            "Clarify whether future definitive therapy remains on the table before choosing dose/fractionation",
+            "Correct anticoagulation and coagulopathy issues where possible",
+            "Monitor hemoglobin and transfusion needs closely",
           ],
-          consults: [
-            "Radiation oncology",
-            "Site-specific team if any doubt about additional hemostatic options",
-          ],
+          consults: ["Radiation oncology", "Relevant procedural services for backup"],
           rtConsiderations: [
-            "GI bleeding: 20 Gy in 5 fx or 30 Gy in 10 fx are common",
-            "Gynecologic bleeding often favors hypofractionation",
-            "8 Gy x 1 can provide brisk palliation but may require retreatment",
+            "Figure examples include 20 Gy in 5 fx, 30 Gy in 10 fx, 8 Gy x 1, 12 Gy in 3 fx, and quad shot",
+            "Expect initial response within days, maximal response within around 2 weeks, and possible retreatment if rebleeding occurs",
           ],
         },
       },
@@ -856,122 +789,101 @@ export const emergencyFlows: EmergencyFlow[] = [
     shortTitle: "Dysphagia",
     category: "gi",
     chiefComplaint:
-      "Difficulty swallowing, regurgitation, aspiration risk, inability to tolerate oral intake.",
+      "Trouble swallowing, food getting stuck, regurgitation, aspiration risk, or inability to tolerate PO.",
     synopsis:
-      "GI obstruction pathway focusing on patency, nutrition, stenting, and when inpatient or outpatient RT makes sense.",
+      "Determine whether immediate patency intervention is needed, then separate potentially curable disease from metastatic palliative management.",
     redFlags: [
-      "Complete inability to take PO",
+      "Complete PO intolerance",
       "Aspiration risk",
-      "Severe malnutrition / dehydration",
-      "Need for urgent feeding access",
+      "Need for urgent stenting",
+      "Marked nutritional decline",
+      "Need for feeding access",
     ],
     workup: [
-      "History focused on obstruction severity and aspiration",
-      "CBC/CMP/coagulation panel",
+      "PO tolerance and nutritional assessment",
       "CT chest with contrast",
-      "EGD for visualization and intervention",
+      "CBC/CMP and biopsy if diagnosis is new",
+      "Review cancer diagnosis and baseline functional status",
     ],
-    defaultConsults: [
-      "Surgery",
-      "Interventional GI",
-      "Nutrition",
-      "Radiation oncology",
-    ],
-    commonDoseFx: [
-      "20 Gy in 5 fractions",
-      "25 Gy in 5 fractions",
-      "30 Gy in 10 fractions",
-      "Higher-dose conventional regimens when more durable control is needed",
-    ],
-    references: refs("giDeck", "paradigmDoc"),
+    defaultConsults: ["Interventional GI", "Surgery", "IR", "Radiation oncology"],
+    commonDoseFx: ["30 Gy in 10 fractions", "25 Gy in 5 fractions", "36-45 Gy in approximately 3 Gy per fraction"],
+    citations: citations("gi", "paradigm"),
+    figures: figures("dysphagia"),
     nodes: [
       {
         id: "start",
-        prompt: "Is there acute complete obstruction or inability to safely take PO?",
-        detail:
-          "If yes, priority is restoring patency and nutrition rather than expecting immediate RT effect.",
+        prompt: "Is this an unstable esophageal or EGJ obstruction with poor PO status and urgent patency needs?",
+        detail: "The figure separates unstable from stable patients based on PO status and nutritional status.",
         choices: [
-          { label: "Yes, acute obstruction", next: "intervention-outcome" },
-          { label: "No, partial / non-acute obstruction", next: "intent-check" },
+          { label: "Yes, unstable / urgent obstruction", next: "unstable-outcome" },
+          { label: "No, stable enough for complete workup", next: "localized-check" },
         ],
       },
       {
-        id: "intent-check",
-        prompt: "Is definitive-intent multidisciplinary therapy still plausible?",
-        detail:
-          "This matters because a short palliative course can complicate later definitive chemoradiation planning.",
+        id: "localized-check",
+        prompt: "Does the malignancy still look localized and potentially curable?",
+        detail: "The figure distinguishes localized disease from metastatic disease before choosing palliative RT.",
         choices: [
-          { label: "Yes, potentially definitive", next: "definitive-outcome" },
-          { label: "No, palliative focus", next: "palliative-outcome" },
+          { label: "Yes, localized / potentially curable", next: "definitive-outcome" },
+          { label: "No, metastatic or palliative context", next: "palliative-outcome" },
         ],
       },
       {
-        id: "intervention-outcome",
-        prompt: "Restore patency first",
-        detail: "Bridge the patient through the acute obstruction.",
+        id: "unstable-outcome",
+        prompt: "Urgent patency pathway",
+        detail: "Non-radiation intervention first.",
         outcome: {
-          title: "Procedural Patency and Nutrition First",
+          title: "Urgent Stent / Endoscopic Patency Management",
           urgency: "High",
           summary:
-            "Acute malignant dysphagia usually needs rapid non-radiation intervention first, such as stenting or feeding support, because RT acts over days to weeks.",
+            "For unstable obstruction, the figure prioritizes esophageal stenting and other endoscopic patency interventions before expecting RT to help.",
           immediateActions: [
-            "Assess aspiration risk and hydration",
-            "Coordinate EGD and consider stenting or local intervention",
-            "Address nutrition with feeding access or TPN when needed",
+            "Coordinate esophageal stent or endoscopic intervention",
+            "Address nutrition support needs immediately",
+            "Assess for aspiration and refeeding concerns",
           ],
-          consults: [
-            "Interventional GI",
-            "Surgery",
-            "Nutrition",
-            "Radiation oncology",
-          ],
+          consults: ["Interventional GI", "Surgery", "Nutrition", "Radiation oncology"],
           rtConsiderations: [
-            "RT can follow once the patient is stabilized and goals are clear",
+            "RT can follow after patency is restored and goals are clarified",
           ],
         },
       },
       {
         id: "definitive-outcome",
-        prompt: "Potentially curative path",
-        detail: "Avoid compromising later definitive treatment.",
+        prompt: "Localized disease pathway",
+        detail: "Definitive discussion first.",
         outcome: {
-          title: "Definitive-Therapy Aware Planning",
+          title: "Multidisciplinary Discussion for Definitive Treatment",
           urgency: "Moderate",
           summary:
-            "If the patient may still receive definitive treatment, coordinate closely before choosing any palliative RT so later planning is not unnecessarily complicated.",
+            "If disease is localized, the figure sends the patient toward multidisciplinary definitive treatment planning rather than reflex palliative RT.",
           immediateActions: [
-            "Clarify stage, performance status, and systemic plan",
-            "Review whether short bridging intervention is better than immediate palliative RT",
+            "Clarify staging and tissue diagnosis",
+            "Coordinate surgery, GI, IR, and medical oncology as needed",
           ],
-          consults: [
-            "Medical oncology",
-            "Surgery",
-            "Radiation oncology",
-          ],
+          consults: ["Medical oncology", "Surgery", "Radiation oncology", "Interventional GI"],
           rtConsiderations: [
-            "Conventional fractionation with or without chemotherapy may be preferred over short palliative courses",
+            "Avoid short palliative treatment that could complicate later definitive therapy if cure is still on the table",
           ],
         },
       },
       {
         id: "palliative-outcome",
-        prompt: "Palliative dysphagia RT path",
-        detail: "When durable symptom relief is the main goal.",
+        prompt: "Metastatic/palliative pathway",
+        detail: "Patency plus palliative RT.",
         outcome: {
-          title: "Palliative RT for Dysphagia",
-          urgency: "Moderate",
+          title: "Patency Support Plus Palliative RT",
+          urgency: "Moderate to high",
           summary:
-            "For non-acute obstruction after stabilization, RT can improve dysphagia over time and may be delivered inpatient or outpatient depending on symptom burden.",
+            "For metastatic disease, the figure combines coordination for decompression and patency with palliative RT chosen by desired durability and patient stability.",
           immediateActions: [
-            "Assess nutritional reserve and current oral tolerance",
-            "Coordinate with GI if stenting may still speed relief",
+            "Coordinate stent placement, ablation, cryotherapy, or endoscopic resection if needed",
+            "Monitor for stent displacement and potential refeeding syndrome",
           ],
-          consults: [
-            "Radiation oncology",
-            "Interventional GI as needed",
-          ],
+          consults: ["Interventional GI", "IR", "Surgery", "Radiation oncology"],
           rtConsiderations: [
-            "Regimens commonly range from 20 Gy in 5 fx to 30 Gy in 10 fx, with higher-dose regimens for more durable palliation",
+            "Moderate dosing examples: 30 Gy in 10 fx or 25 Gy in 5 fx",
+            "Heavier dosing for more durable palliation: 36-45 Gy in up to 3 Gy per fraction",
           ],
         },
       },
@@ -979,124 +891,211 @@ export const emergencyFlows: EmergencyFlow[] = [
   },
   {
     id: "gi-bleeding",
-    title: "Gastrointestinal Tumor Bleeding",
+    title: "GI Bleeding",
     shortTitle: "GI Bleeding",
     category: "gi",
     chiefComplaint:
-      "Hematemesis, melena, hematochezia, anemia, or hypotension from GI tract tumor bleeding.",
+      "Hematemesis, hematochezia, melena, anemia, or hypotension from GI tumor bleeding.",
     synopsis:
-      "GI-focused bleeding flow with source localization, endoscopic/IR bridge options, and palliative RT choices.",
+      "Stabilize hemodynamics, rule in malignancy, then decide between definitive discussion and combined GI/IR/palliative RT management.",
     redFlags: [
+      "Hemodynamic instability",
       "Hypotension",
-      "Hgb < 7 or fast downtrend",
-      "Active large-volume hematemesis or hematochezia",
       "Transfusion dependence",
+      "Severe anemia",
+      "Rapid recurrent bleeding",
     ],
     workup: [
-      "Determine upper vs lower GI source from symptoms",
       "CBC and coagulation studies",
-      "CT CAP with contrast",
-      "EGD and/or colonoscopy as appropriate",
+      "EGD/colonoscopy if appropriate",
+      "CT CAP",
+      "Review anticoagulation and comorbidities",
     ],
-    defaultConsults: [
-      "Interventional GI",
-      "Surgery / colorectal / thoracic depending on site",
-      "IR",
-      "Radiation oncology",
-    ],
-    commonDoseFx: [
-      "20 Gy in 5 fractions",
-      "25 Gy in 5 fractions",
-      "30 Gy in 10 fractions",
-      "36-39 Gy in 3 Gy per fraction for selected esophageal/gastric cases",
-    ],
-    references: refs("giDeck", "bleedingDeck"),
+    defaultConsults: ["Interventional GI", "IR", "Surgery", "Radiation oncology"],
+    commonDoseFx: ["30 Gy in 10 fractions", "25 Gy in 5 fractions", "36-39 Gy in 3 Gy fractions for selected esophageal/EGJ/gastric cases"],
+    citations: citations("gi", "bleeding"),
+    figures: figures("giBleeding"),
     nodes: [
       {
         id: "start",
-        prompt: "Is the patient hypotensive or requiring ongoing transfusions?",
-        detail: "Stabilization and source control come first.",
+        prompt: "Is the patient hemodynamically unstable from GI bleeding?",
+        detail: "The figure starts with blood pressure and CBC-driven hemodynamic assessment.",
         choices: [
-          { label: "Yes", next: "unstable-outcome" },
-          { label: "No", next: "intervention-check" },
+          { label: "Yes, unstable", next: "unstable-outcome" },
+          { label: "No, stable enough for full workup", next: "localized-check" },
         ],
       },
       {
-        id: "intervention-check",
-        prompt: "Is endoscopic or IR hemostasis available and likely to work quickly?",
-        detail: "Use the fastest effective bridge when available.",
+        id: "localized-check",
+        prompt: "After workup, is this localized and potentially curable or metastatic/palliative?",
+        detail: "The figure branches by malignancy status before the RT plan.",
         choices: [
-          { label: "Yes", next: "bridge-outcome" },
-          { label: "No", next: "rt-outcome" },
+          { label: "Localized / potentially curable", next: "definitive-outcome" },
+          { label: "Metastatic / palliative", next: "palliative-outcome" },
         ],
       },
       {
         id: "unstable-outcome",
-        prompt: "Resuscitation path",
-        detail: "Immediate supportive and procedural care.",
+        prompt: "Initial stabilization pathway",
+        detail: "Non-radiation control first.",
         outcome: {
-          title: "GI Bleeding Rescue Path",
+          title: "Urgent Endoscopic / Procedural Stabilization First",
           urgency: "Critical",
           summary:
-            "For unstable GI bleeding, prioritize transfusion, localization, and endoscopic/IR/surgical intervention before relying on RT.",
+            "For unstable GI bleeding, the figure prioritizes surgery or endoscopic laser/ablative control before palliative RT is expected to work.",
           immediateActions: [
-            "Resuscitate and transfuse",
-            "Localize source with symptoms, imaging, and endoscopy",
-            "Correct coagulopathy and review anticoagulants",
+            "Transfuse and stabilize hemodynamics",
+            "Coordinate urgent endoscopy and procedural hemostasis",
+            "Clarify upper vs lower source and malignancy involvement",
           ],
-          consults: [
-            "Interventional GI",
-            "Surgery and/or IR",
-            "Radiation oncology once stabilized",
-          ],
+          consults: ["Interventional GI", "Surgery", "IR", "Radiation oncology after stabilization"],
           rtConsiderations: [
-            "RT is generally a downstream durable-control tool, not the first rescue move",
+            "RT becomes the downstream durable-control tool rather than the first rescue step",
           ],
         },
       },
       {
-        id: "bridge-outcome",
-        prompt: "Bridge first path",
-        detail: "Procedure before RT.",
+        id: "definitive-outcome",
+        prompt: "Localized disease pathway",
+        detail: "Potentially curative intent.",
         outcome: {
-          title: "Endoscopic / IR Bridge Before RT",
-          urgency: "High",
-          summary:
-            "Use a procedural bridge for faster hemostasis when available, then consider RT for recurrence prevention or durable tumor control.",
-          immediateActions: [
-            "Coordinate endoscopy or embolization",
-            "Trend CBC and transfusion needs",
-          ],
-          consults: [
-            "Interventional GI",
-            "IR",
-            "Radiation oncology",
-          ],
-          rtConsiderations: [
-            "20 Gy in 5 fx or 30 Gy in 10 fx are common palliative options",
-          ],
-        },
-      },
-      {
-        id: "rt-outcome",
-        prompt: "RT-driven GI bleeding path",
-        detail: "For stabilized patients where RT is the best local option.",
-        outcome: {
-          title: "Palliative RT for GI Bleeding",
+          title: "Multidisciplinary Definitive-Treatment Discussion",
           urgency: "Moderate",
           summary:
-            "In stabilized GI tumor bleeding without a superior acute intervention, RT can provide meaningful hemostatic benefit over days to weeks.",
+            "If the malignancy is localized, the figure points toward definitive multidisciplinary management instead of immediate palliative RT framing.",
           immediateActions: [
-            "Confirm site and disease extent",
-            "Review prior GI/pelvic RT if relevant",
+            "Stage the malignancy fully",
+            "Coordinate surgery, GI, and oncology planning",
           ],
-          consults: [
-            "Radiation oncology",
-            "GI / surgery as needed",
-          ],
+          consults: ["Medical oncology", "Surgery", "Radiation oncology", "Interventional GI"],
           rtConsiderations: [
-            "20 Gy in 5 fx, 25 Gy in 5 fx, or 30 Gy in 10 fx are common approaches",
-            "Site-specific escalation can be considered for esophageal or gastric tumors",
+            "Keep palliative RT decisions aligned with whether definitive therapy is still planned",
+          ],
+        },
+      },
+      {
+        id: "palliative-outcome",
+        prompt: "Metastatic/palliative pathway",
+        detail: "GI/IR coordination plus RT.",
+        outcome: {
+          title: "GI / IR Coordination Plus Palliative RT",
+          urgency: "High",
+          summary:
+            "For metastatic GI bleeding, the figure supports GI/IR coordination for local control and palliative RT for durable hemostasis.",
+          immediateActions: [
+            "Coordinate ablation, cryotherapy, or endoscopic resection when useful",
+            "Monitor hemodynamic stability and recurrent bleeding closely",
+          ],
+          consults: ["Interventional GI", "IR", "Radiation oncology"],
+          rtConsiderations: [
+            "Moderate dosing: 30 Gy in 10 fx or 25 Gy in 5 fx",
+            "Heavier dosing examples: 36-39 Gy in 3 Gy fractions for selected esophageal/EGJ/gastric cases",
+          ],
+        },
+      },
+    ],
+  },
+  {
+    id: "bowel-obstruction",
+    title: "Malignant Bowel Obstruction",
+    shortTitle: "Bowel Obstruction",
+    category: "gi",
+    chiefComplaint:
+      "No bowel movements, nausea/vomiting, inability to tolerate PO, or concern for bowel compromise.",
+    synopsis:
+      "Start with bowel integrity and perforation risk, then separate localized disease from metastatic palliative management.",
+    redFlags: [
+      "Perforation or bowel integrity concern",
+      "Complete obstruction",
+      "Rapidly worsening abdominal symptoms",
+      "Severe nutritional compromise",
+      "Need for urgent NG decompression or surgery",
+    ],
+    workup: [
+      "Assess bowel integrity and nutritional status",
+      "CT CAP and consider small bowel series",
+      "CBC and coagulation studies",
+      "Clarify anticoagulation and cancer history",
+    ],
+    defaultConsults: ["Surgery", "IR", "Nutrition", "Radiation oncology"],
+    commonDoseFx: ["Examples in the figure: 20 Gy in 5 fractions or 30 Gy in 10 fractions"],
+    citations: citations("gi", "paradigm"),
+    figures: figures("bowel"),
+    nodes: [
+      {
+        id: "start",
+        prompt: "Is there instability, perforation risk, or urgent bowel-integrity concern?",
+        detail: "The figure begins with bowel integrity/perforation risk and nutritional status.",
+        choices: [
+          { label: "Yes, unstable / urgent surgical concern", next: "unstable-outcome" },
+          { label: "No, stable enough for full workup", next: "localized-check" },
+        ],
+      },
+      {
+        id: "localized-check",
+        prompt: "Is the malignancy localized and potentially curable or metastatic?",
+        detail: "The stable branch moves from workup to malignancy identification and intent.",
+        choices: [
+          { label: "Localized / potentially curable", next: "definitive-outcome" },
+          { label: "Metastatic / palliative", next: "palliative-outcome" },
+        ],
+      },
+      {
+        id: "unstable-outcome",
+        prompt: "Urgent surgical pathway",
+        detail: "Non-radiation emergency management first.",
+        outcome: {
+          title: "Urgent Surgical / Decompression Management",
+          urgency: "Critical",
+          summary:
+            "For unstable bowel obstruction, the figure prioritizes surgery consultation and acute decompressive management rather than immediate RT.",
+          immediateActions: [
+            "Coordinate urgent surgical evaluation",
+            "Address NG tube decompression and bowel regimen as needed",
+            "Support hydration and nutritional status",
+          ],
+          consults: ["Surgery", "Nutrition", "Primary team"],
+          rtConsiderations: [
+            "RT is generally a downstream palliative option once acute integrity threats are addressed",
+          ],
+        },
+      },
+      {
+        id: "definitive-outcome",
+        prompt: "Localized disease pathway",
+        detail: "Definitive planning first.",
+        outcome: {
+          title: "Definitive Multidisciplinary Management",
+          urgency: "Moderate",
+          summary:
+            "If malignancy is localized, the figure favors multidisciplinary definitive treatment discussion rather than default palliative RT.",
+          immediateActions: [
+            "Clarify resectability and staging",
+            "Coordinate surgery and oncology planning",
+          ],
+          consults: ["Surgery", "Medical oncology", "Radiation oncology"],
+          rtConsiderations: [
+            "Keep palliative RT in reserve if goals shift or decompression remains needed",
+          ],
+        },
+      },
+      {
+        id: "palliative-outcome",
+        prompt: "Metastatic/palliative bowel obstruction pathway",
+        detail: "Surgical coordination plus RT examples.",
+        outcome: {
+          title: "Palliative Coordination With Surgery and RT",
+          urgency: "High",
+          summary:
+            "For metastatic obstruction, the figure supports close cooperation with inpatient and surgical teams, NG decompression, nutritional management, and palliative RT as appropriate.",
+          immediateActions: [
+            "Coordinate NG tube, possible laparotomy discussions, and nutritional support",
+            "Use medical management and inpatient support aggressively",
+          ],
+          consults: ["Surgery", "Nutrition", "Radiation oncology", "Palliative care"],
+          rtConsiderations: [
+            "Figure examples include 20 Gy in 5 fx and 30 Gy in 10 fx",
+            "Benefit is possible, but the figure notes the prognosis is often generally poor in this population",
           ],
         },
       },

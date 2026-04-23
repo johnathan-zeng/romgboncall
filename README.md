@@ -7,7 +7,7 @@ An interactive, local-first web app for walking through common radiation oncolog
 - Click-through emergency algorithms for CNS, thoracic, bleeding, and GI scenarios
 - Decision-tree flow that updates recommendations as users branch through a case
 - Quick-reference sections for triage, workup, consults, temporizing measures, and RT considerations
-- Bundled source teaching files in `public/references/` with in-app citation links
+- Bundled algorithm figures in `public/figures/` with in-app modal viewing
 - Searchable home screen and shareable routes
 - Local development with Vite
 - Static deployment support for GitHub Pages
@@ -50,16 +50,7 @@ This repo also includes a `vercel.json` for simple static deployment.
 
 ## Source basis
 
-The initial decision trees and guidance were seeded from:
-
-- `General Paradigm of Palliative RT V2.docx`
-- `ROEmergencies_Manuscript_rev1.docx`
-- `ARRO_bleeding_SZ_SN.pptx`
-- `ARRO_CNS_Emergencies_121625_sn.pptx`
-- `ARRO_ROCK_airway_obstruct_1_27_26.pptx`
-- `ARRO_ROCK_hemoptysis_1_27_26.pptx`
-- `ARRO_ROCK_ThoracicEmergencies.pptx`
-- `NEW_GI_OnCall_V3.pptx`
+The current interactive pathways are aligned to the bundled PNG algorithms while preserving citation text from the original teaching materials on each page.
 
 ## Important note
 

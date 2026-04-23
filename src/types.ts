@@ -1,11 +1,16 @@
 export type FlowTag = "cns" | "thoracic" | "bleeding" | "gi" | "general";
 
-export type FlowReference = {
+export type FlowCitation = {
   id: string;
   title: string;
   citation: string;
-  href: string;
-  format: "pptx" | "pdf" | "docx";
+};
+
+export type FlowFigure = {
+  id: string;
+  title: string;
+  src: string;
+  caption: string;
 };
 
 export type FlowOutcome = {
@@ -43,6 +48,7 @@ export type EmergencyFlow = {
   workup: string[];
   defaultConsults: string[];
   commonDoseFx: string[];
-  references: FlowReference[];
+  citations: FlowCitation[];
+  figures: FlowFigure[];
   nodes: FlowNode[];
 };
