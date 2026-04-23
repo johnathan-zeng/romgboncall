@@ -1,4 +1,74 @@
-import { EmergencyFlow } from "../types";
+import { EmergencyFlow, FlowReference } from "../types";
+
+const referenceLibrary: Record<string, FlowReference> = {
+  cnsDeck: {
+    id: "cnsDeck",
+    title: "ARRO CNS Emergencies",
+    citation:
+      "Vera A, Dias Neto, Medina A, Freret M. Radiation Oncology On-Call Handbook: CNS emergencies. Association of Residents in Radiation Oncology. December 2025.",
+    href: "/references/pptx/ARRO_CNS_Emergencies_121625_sn.pptx",
+    format: "pptx",
+  },
+  thoracicDeck: {
+    id: "thoracicDeck",
+    title: "ARRO ROCK Thoracic Emergencies",
+    citation:
+      "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Hemoptysis and Airway Obstruction. Association of Residents in Radiation Oncology. January 23, 2026.",
+    href: "/references/pptx/ARRO_ROCK_ThoracicEmergencies.pptx",
+    format: "pptx",
+  },
+  airwayDeck: {
+    id: "airwayDeck",
+    title: "ARRO ROCK Airway Obstruction",
+    citation:
+      "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Airway Obstruction. Association of Residents in Radiation Oncology. January 23, 2026.",
+    href: "/references/pptx/ARRO_ROCK_airway_obstruct_1_27_26.pptx",
+    format: "pptx",
+  },
+  hemoptysisDeck: {
+    id: "hemoptysisDeck",
+    title: "ARRO ROCK Hemoptysis",
+    citation:
+      "Arthur M, Doss VL, Kozono D. Radiation Oncology On-Call Handbook: Hemoptysis. Association of Residents in Radiation Oncology. January 23, 2026.",
+    href: "/references/pptx/ARRO_ROCK_hemoptysis_1_27_26.pptx",
+    format: "pptx",
+  },
+  bleedingDeck: {
+    id: "bleedingDeck",
+    title: "ARRO Tumor Bleeding",
+    citation:
+      "Zhao S, Neibart SS, Turner BE. Radiation Oncology On-Call Handbook: Palliative Radiation for Tumor Bleeding. Association of Residents in Radiation Oncology. September 15, 2025.",
+    href: "/references/pptx/ARRO_bleeding_SZ_SN.pptx",
+    format: "pptx",
+  },
+  giDeck: {
+    id: "giDeck",
+    title: "ARRO GI Emergencies",
+    citation:
+      "Ho A. Radiation Oncology On-Call Handbook: Gastrointestinal Emergencies. Association of Residents in Radiation Oncology. September 15, 2025.",
+    href: "/references/pptx/NEW_GI_OnCall_V3.pptx",
+    format: "pptx",
+  },
+  paradigmDoc: {
+    id: "paradigmDoc",
+    title: "Palliative RT: General Paradigms and Concepts",
+    citation:
+      "Ho A. Palliative RT: General Paradigms and Concepts. Peer reviewed by the ARRO Education Subcommittee.",
+    href: "/references/docx/General%20Paradigm%20of%20Palliative%20RT%20V2.docx",
+    format: "docx",
+  },
+  manuscriptDoc: {
+    id: "manuscriptDoc",
+    title: "Inpatient Radiation Oncology and On-Call Emergencies",
+    citation:
+      "Neibart SS. Inpatient Radiation Oncology and On-Call Emergencies. Department of Radiation Oncology, Mass General Brigham.",
+    href: "/references/docx/ROEmergencies_Manuscript_rev1.docx",
+    format: "docx",
+  },
+};
+
+const refs = (...ids: Array<keyof typeof referenceLibrary>) =>
+  ids.map((id) => referenceLibrary[id]);
 
 export const emergencyFlows: EmergencyFlow[] = [
   {
@@ -33,10 +103,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "WBRT 20 Gy in 5 fractions for poorer prognosis",
       "SRS considered in limited metastatic disease when clinically appropriate",
     ],
-    sources: [
-      "ARRO_CNS_Emergencies_121625_sn.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-    ],
+    references: refs("cnsDeck", "manuscriptDoc"),
     nodes: [
       {
         id: "start",
@@ -182,11 +249,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "30-36 Gy in 10-12 fractions",
       "8 Gy x 1 usually reserved for pain without neurologic compromise",
     ],
-    sources: [
-      "ARRO_CNS_Emergencies_121625_sn.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-      "General Paradigm of Palliative RT V2.docx",
-    ],
+    references: refs("cnsDeck", "manuscriptDoc", "paradigmDoc"),
     nodes: [
       {
         id: "start",
@@ -302,10 +365,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "WBRT or CSI 30 Gy in 10 fractions in selected patients",
       "IFRT to symptomatic sites can be appropriate",
     ],
-    sources: [
-      "ARRO_CNS_Emergencies_121625_sn.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-    ],
+    references: refs("cnsDeck", "manuscriptDoc"),
     nodes: [
       {
         id: "start",
@@ -436,11 +496,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "20 Gy in 5 fractions",
       "30 Gy in 10 fractions",
     ],
-    sources: [
-      "ARRO_ROCK_hemoptysis_1_27_26.pptx",
-      "ARRO_ROCK_ThoracicEmergencies.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-    ],
+    references: refs("hemoptysisDeck", "thoracicDeck", "manuscriptDoc"),
     nodes: [
       {
         id: "start",
@@ -571,11 +627,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "30 Gy in 10 fractions",
       "17 Gy in 2 fractions once weekly",
     ],
-    sources: [
-      "ARRO_ROCK_airway_obstruct_1_27_26.pptx",
-      "ARRO_ROCK_ThoracicEmergencies.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-    ],
+    references: refs("airwayDeck", "thoracicDeck", "manuscriptDoc"),
     nodes: [
       {
         id: "start",
@@ -702,11 +754,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "8 Gy x 1 in selected settings",
       "Hypofractionation preferred in many gynecologic bleeding scenarios",
     ],
-    sources: [
-      "ARRO_bleeding_SZ_SN.pptx",
-      "ROEmergencies_Manuscript_rev1.docx",
-      "NEW_GI_OnCall_V3.pptx",
-    ],
+    references: refs("bleedingDeck", "manuscriptDoc", "giDeck"),
     nodes: [
       {
         id: "start",
@@ -835,7 +883,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "30 Gy in 10 fractions",
       "Higher-dose conventional regimens when more durable control is needed",
     ],
-    sources: ["NEW_GI_OnCall_V3.pptx", "General Paradigm of Palliative RT V2.docx"],
+    references: refs("giDeck", "paradigmDoc"),
     nodes: [
       {
         id: "start",
@@ -962,7 +1010,7 @@ export const emergencyFlows: EmergencyFlow[] = [
       "30 Gy in 10 fractions",
       "36-39 Gy in 3 Gy per fraction for selected esophageal/gastric cases",
     ],
-    sources: ["NEW_GI_OnCall_V3.pptx", "ARRO_bleeding_SZ_SN.pptx"],
+    references: refs("giDeck", "bleedingDeck"),
     nodes: [
       {
         id: "start",

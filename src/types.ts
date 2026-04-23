@@ -1,5 +1,13 @@
 export type FlowTag = "cns" | "thoracic" | "bleeding" | "gi" | "general";
 
+export type FlowReference = {
+  id: string;
+  title: string;
+  citation: string;
+  href: string;
+  format: "pptx" | "pdf" | "docx";
+};
+
 export type FlowOutcome = {
   title: string;
   urgency: string;
@@ -35,6 +43,6 @@ export type EmergencyFlow = {
   workup: string[];
   defaultConsults: string[];
   commonDoseFx: string[];
-  sources: string[];
+  references: FlowReference[];
   nodes: FlowNode[];
 };

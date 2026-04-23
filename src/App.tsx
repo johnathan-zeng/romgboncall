@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { categoryLabels, emergencyFlows } from "./data/emergencies";
-import { EmergencyFlow, FlowNode } from "./types";
+import { EmergencyFlow, FlowNode, FlowReference } from "./types";
 
 const flowMap = new Map(emergencyFlows.map((flow) => [flow.id, flow]));
 
@@ -80,25 +80,11 @@ function Hero() {
     <header className="hero">
       <div className="hero-copy">
         <div className="eyebrow">Radiation Oncology On-Call</div>
-        <h1>Interactive emergency pathways built from your ARRO and ROCK source files.</h1>
+        <h1>Interactive emergency pathways for radiation oncology call.</h1>
         <p>
           Click into an emergency, branch through key triage decisions, and surface
           a concise action frame for consults, temporizing measures, and RT planning.
         </p>
-      </div>
-      <div className="hero-panel">
-        <div className="stat">
-          <span className="stat-number">{emergencyFlows.length}</span>
-          <span className="stat-label">seeded pathways</span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">Local</span>
-          <span className="stat-label">Vite dev + static build</span>
-        </div>
-        <div className="stat">
-          <span className="stat-number">Deployable</span>
-          <span className="stat-label">GitHub Pages or Vercel</span>
-        </div>
       </div>
     </header>
   );
@@ -138,8 +124,8 @@ function EmergencyPage() {
         </div>
         <div className="header-summary">
           <div>
-            <strong>Source basis</strong>
-            <span>{flow.sources.join(" • ")}</span>
+            <strong>Source Basis</strong>
+            <ReferenceList references={flow.references} />
           </div>
         </div>
       </section>
@@ -205,7 +191,7 @@ function FlowExplorer({ flow }: { flow: EmergencyFlow }) {
       </div>
 
       {currentNode.outcome ? (
-        <OutcomeCard node={currentNode} />
+        <OutcomeCard flow={flow} node={currentNode} />
       ) : (
         <div className="choice-grid">
           {currentNode.choices?.map((choice) => (
@@ -224,7 +210,7 @@ function FlowExplorer({ flow }: { flow: EmergencyFlow }) {
   );
 }
 
-function OutcomeCard({ node }: { node: FlowNode }) {
+function OutcomeCard({ flow, node }: { flow: EmergencyFlow; node: FlowNode }) {
   const outcome = node.outcome!;
 
   return (
@@ -245,11 +231,54 @@ function OutcomeCard({ node }: { node: FlowNode }) {
       {outcome.notes?.length ? (
         <OutcomeSection title="Notes / cautions" items={outcome.notes} />
       ) : null}
+      <ReferencePanel references={flow.references} />
       <div className="disclaimer">
         Educational guide only. Verify against attending guidance, institutional workflows,
         re-irradiation history, and current multidisciplinary recommendations.
       </div>
     </article>
+  );
+}
+
+function ReferencePanel({ references }: { references: FlowReference[] }) {
+  return (
+    <section className="outcome-section">
+      <h4>Related teaching files</h4>
+      <div className="reference-stack">
+        {references.map((reference) => (
+          <a
+            key={reference.id}
+            className="reference-card"
+            href={reference.href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className="reference-format">{reference.format.toUpperCase()}</span>
+            <strong>{reference.title}</strong>
+            <span>{reference.citation}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ReferenceList({ references }: { references: FlowReference[] }) {
+  return (
+    <div className="reference-list">
+      {references.map((reference) => (
+        <a
+          key={reference.id}
+          className="reference-inline"
+          href={reference.href}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <strong>{reference.title}</strong>
+          <span>{reference.citation}</span>
+        </a>
+      ))}
+    </div>
   );
 }
 

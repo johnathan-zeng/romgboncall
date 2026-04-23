@@ -7,6 +7,7 @@ An interactive, local-first web app for walking through common radiation oncolog
 - Click-through emergency algorithms for CNS, thoracic, bleeding, and GI scenarios
 - Decision-tree flow that updates recommendations as users branch through a case
 - Quick-reference sections for triage, workup, consults, temporizing measures, and RT considerations
+- Bundled source teaching files in `public/references/` with in-app citation links
 - Searchable home screen and shareable routes
 - Local development with Vite
 - Static deployment support for GitHub Pages
