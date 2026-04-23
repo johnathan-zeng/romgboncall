@@ -538,7 +538,7 @@ function Footer() {
   return (
     <footer className="footer-note">
       <div className="footer-main">
-        <span>Built by Johnathan Zeng, MD</span>
+        <span>Built by Johnathan Zeng, MD and Shane Neibart, MD</span>
       </div>
       <div className="footer-logos" aria-label="Program logos">
         <img src="/logos/HROP%20Logo.jpg" alt="Harvard Radiation Oncology Program logo" className="footer-logo hrop-logo" />
