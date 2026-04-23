@@ -541,7 +541,6 @@ function Footer() {
         <span>Built by Johnathan Zeng, MD</span>
       </div>
       <div className="footer-logos" aria-label="Program logos">
-        <img src="/logos/ARRO%20Logo.jpg" alt="ARRO logo" className="footer-logo arro-logo" />
         <img src="/logos/HROP%20Logo.jpg" alt="Harvard Radiation Oncology Program logo" className="footer-logo hrop-logo" />
       </div>
       <div className="footer-updated">Last updated: {LAST_UPDATED}</div>

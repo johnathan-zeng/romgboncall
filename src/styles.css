@@ -648,6 +648,10 @@ img {
 
 .hrop-logo {
   height: 96px;
+  width: 96px;
+  object-fit: contain;
+  object-position: center;
+  padding: 6px;
 }
 
 .footer-updated {
