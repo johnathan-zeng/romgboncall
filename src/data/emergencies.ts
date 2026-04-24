@@ -158,8 +158,8 @@ export const emergencyFlows: EmergencyFlow[] = [
       },
       {
         id: "resectable",
-        prompt: "Is the patient ECOG 0-2 and is the lesion resectable?",
-        detail: "If yes, the figure routes toward resection followed by postoperative focal radiation.",
+        prompt: "Is the patient ECOG 0-2 with a resectable lesion or diagnostic uncertainty that favors tissue?",
+        detail: "If yes, the figure routes toward resection followed by postoperative focal radiation; diagnostic uncertainty can also support surgery even without symptoms.",
         choices: [
           { label: "Yes, good surgical candidate", next: "postop-outcome" },
           { label: "No, not resectable or poor candidate", next: "systemic-outcome" },
@@ -203,15 +203,15 @@ export const emergencyFlows: EmergencyFlow[] = [
           title: "Systemic-Therapy-Led Evaluation With RT Technique Selection",
           urgency: "Moderate to high",
           summary:
-            "When the lesion is large but not resectable, the figure points toward systemic therapy review and then an RT technique chosen by disease distribution and goals.",
+            "When the lesion is large but not resectable, the figure points toward systemic therapy review or definitive RT, then an RT technique chosen by disease distribution and goals.",
           immediateActions: [
             "Review targeted or systemic options with CNS activity",
-            "Clarify if urgent symptom control is still needed from RT",
+            "Clarify if urgent symptom control is still needed from definitive RT",
             "Plan simulation approach and immobilization if RT proceeds",
           ],
           consults: ["Medical oncology", "Radiation oncology", "Neurosurgery as needed"],
           rtConsiderations: [
-            "WBRT or HA-WBRT may be needed if disease is diffuse",
+            "Definitive RT or broader intracranial RT may be needed depending on burden and intent",
             "Focal techniques can still be considered selectively if anatomy allows",
           ],
         },
@@ -247,14 +247,15 @@ export const emergencyFlows: EmergencyFlow[] = [
           summary:
             "If intracranial disease burden is not well served by focal treatment alone, the figure routes toward WBRT or hippocampal-avoidance WBRT with memantine when appropriate.",
           immediateActions: [
-            "Assess candidacy for hippocampal avoidance",
             "Start memantine if HA-WBRT or WBRT is chosen and clinically appropriate",
+            "Assess candidacy for hippocampal avoidance",
             "Review simulation setup including aquaplast mask",
           ],
           consults: ["Radiation oncology", "Medical oncology"],
           rtConsiderations: [
             "WBRT 30 Gy in 10 fractions",
-            "HA-WBRT 30 Gy in 10 fractions + memantine for 6 months when appropriate",
+            "Memantine should be paired with WBRT/HA-WBRT when appropriate",
+            "HA-WBRT 30 Gy in 10 fractions; avoid HA-WBRT in SCLC, leptomeningeal disease, or hippocampal-adjacent metastases",
           ],
         },
       },

@@ -14,6 +14,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if (window.location.protocol === "file:") {
+        const root = document.getElementById("root");
+        if (root) {
+          root.innerHTML = `
+            <div style="max-width:720px;margin:48px auto;padding:24px;font-family:Avenir Next,Segoe UI,sans-serif;line-height:1.5;color:#14202b;border:1px solid rgba(20,32,43,.12);border-radius:20px;background:rgba(255,255,255,.92)">
+              <h1 style="margin-top:0">Open This App Through A Local Server</h1>
+              <p>This Vite app will not run from <code>file://</code> source files.</p>
+              <p>Use <strong>http://localhost:5173/</strong> during development, or open the built file at <code>dist/index.html</code> after running <code>npm run build</code>.</p>
+            </div>
+          `;
+        }
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
